@@ -1,8 +1,7 @@
 import {  getLibros, saveLibro } from './firebase_connection.js' // Imports the querys
 
 const form = document.querySelector(".formulario") // Selects the form
-const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add products (there needs to add an id to the button in the principal.html)
-
+const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 
 let libros = []
 
@@ -21,6 +20,7 @@ const main = () => {
         e.preventDefault(); // Evita que se refresque la página
         insertBook()
     })
+
 }
 // ---------------- Funciones ------------------
 
@@ -34,15 +34,16 @@ const insertBook = async () => {
         lib_img: form.portada.value,
         lib_titulo: form.titulo.value,
         lib_disponibilidad: true,
-        // Para el modal de rentar un libro
+        // 
         pres_correo: null,
         pres_domicilio: null,
         pres_fecha_fin: null,
         pres_fecha_inicio: null,
         pres_nombre: null,
-        pres_telefono: null,
-
+        pres_telefono: null
     }
     await saveLibro(sendData)
     form.reset()
 }
+
+

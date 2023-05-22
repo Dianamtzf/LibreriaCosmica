@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"
+import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"
 
 
 // Firebase configuration
@@ -57,4 +57,15 @@ const deleteLibro = async (lib) => {
     }
   }
 
-export { getLibros, saveLibro, deleteLibro }
+  // UPDATE
+  const updateLibro = async (sendData) => {
+    try {
+        const libroRef = doc(libros, sendData.id);
+        await updateDoc(libroRef, sendData);
+        console.log("Libro updated successfully:", sendData.libro_titulo);
+    } catch (error) {
+        console.error("Error! Couldn't update the book:", error);
+    }
+  }
+
+export { getLibros, saveLibro, deleteLibro, updateLibro }
