@@ -12,7 +12,10 @@
 </head>
 <body>
     <div class="container modalRegistro" style="display: none;">
-        <h1>Register</h1>
+        <div class="user-icon text-center">
+            <img src="./images/users.png" alt="User Icon" style="width: 100px; height: 100px;">
+        </div>
+        <h1 class="text-center">SignUp</h1>
         <label for="username">Nombre:</label>
         <input
             type="text"
@@ -41,17 +44,21 @@
             required
         >
         <input
-        type="submit"
-        class="signUp"
-        value="Registarse"
-        name="signup_submit"
+            type="submit"
+            class="signUp mt-3"
+            value="Registrarse"
+            name="signup_submit"
+            style="width: 100%"
         >
         <span>¿Ya tienes una cuenta?</span>
         <a href="#" id="loginLink">Inicia Sesión</a>
     </div>
 
     <div class="container modalLogin" style="display: block;">
-        <h1>Login</h1>
+        <div class="user-icon text-center">
+            <img src="./images/user.png" alt="User Icon" style="width: 100px; height: 100px;">
+        </div>
+        <h1 class="text-center">Login</h1>
         <label for="email">Correo:</label>
         <input
             type="text"
@@ -71,19 +78,20 @@
             required
         >
         <input
-        type="submit"
-        class="login"
-        value="Ingresar"
-        name="login_submit"
+            type="submit"
+            class="login mt-3"
+            value="Ingresar"
+            name="login_submit"
+            style="width: 100%"
         >
         <span>¿Aún no tienes una cuenta?</span>
         <a href="#" id="registerLink">Registrate</a>
         <h5>OR</h5>
         <input
-        type="button"
-        class="btn btn-danger loginGoog"
-        value="Login with Google+"
-        name="loginGoog_submit"
+            type="button"
+            class="btn btn-danger loginGoog"
+            value="Login with Google+"
+            name="loginGoog_submit"
         >
     </div>
     
