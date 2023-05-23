@@ -1,10 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signInWithPopup, getRedirectResult, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
 
 const signUp = document.querySelector('.signUp') // Selects the button to signup
 const login = document.querySelector('.login') // Selects the button to login
+const loginGoog = document.querySelector('.loginGoog') //Selects the button ton login with Google
 //const logout = document.querySelector('.logout') // Selects the button to logout
 
 
@@ -22,7 +24,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const auth = getAuth();
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider(app);
 
 const registerLink = document.getElementById('registerLink');
 const loginLink = document.getElementById('loginLink');
@@ -124,6 +127,41 @@ login.addEventListener('click', (e) => {
             text: 'Hay campos vacíos'
         });
     }
+});
+
+loginGoog.addEventListener('click', (e) => {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+
+        Swal.fire({
+            icon: 'success',
+            text: '¡Bienvenido/a!',
+            title: user.displayName,
+            showConfirmButton: false,
+            timer: 2000
+        }).then(() => {
+            window.location.href = "biblioteca.html"; // Redirige al usuario a biblioteca.html
+        });
+
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Algo salio mal!!'
+        });
+    });
 });
 
 //logout
