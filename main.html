@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Books🤠</title>
+</head>
+<body>
+    <header class="header">
+        <div class="btn-menu">
+            <label for="btn-menu" class="icon-menu"><i class="fa-solid fa-bars" style="font-size: 3rem;"></i></label>
+        </div>
+        
+        <div style="position: absolute; left: 33rem;">
+            <img src="images/new_logo.png" alt="" style="width: 16rem; height: 9rem;">
+        </div>
+        <div class="buscador">
+            <input type="text" placeholder="Buscar" style="font-family: 'Baloo 2', cursive;">
+            <div class="btn">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+
+        <button class="btnAgregar">
+            <div class="icono-boton-agregar">
+                <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
+            </div>
+            <span>Agregar Libro</span>
+            
+        </button>
+    </header>
+
+    <main class="main">
+        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; top: 15vh; height: 42rem;">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="images/slide01.jpg" class="d-block w-100" style="height: 40rem;" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/slide02.jpg" class="d-block w-100" style="height: 40rem;" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="images/slide03.jpg" class="d-block w-100" style="height: 40rem;" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+        </section>
+        
+        <a class="ir-arriba">
+            <i class="fa-solid fa-circle-arrow-up fa-beat-fade" style="font-size: 4.5rem; box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.5); border-radius: 5rem;"></i>
+        </a>
+    </main>
+
+    <!--Menu Lateral-->
+    <input type="checkbox" name="" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <h2 style="color: wheat; padding-left: 25px; padding-top: 25px;">Categorías</h2>
+            <nav>
+                <a href="">Romance</a>
+                <a href="">Terror</a>
+                <a href="">Comedia</a>
+                <a href="">Crimen</a>
+                <a href="">Ciencia Ficción</a>
+                <a href="">Astrología</a>                
+            </nav>
+            <div style="position: absolute; top: 58rem; left: 3rem; right: 3rem;">
+                <a href="#" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
+                    <span></span>
+                    <span></span>
+                </i></a>
+            </div>
+            
+            <label for="btn-menu" class="icon-equis"><i class="fa-solid fa-arrow-left" style="margin-right: 10px; font-size: 25px; margin-top: 15px;"></i></label>
+        </div>
+    </div>
+    
+    <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
