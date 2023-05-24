@@ -1,0 +1,307 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Hack para box-model*/
+    scroll-snap-type: y mandatory; /*Efecto de scroll en el eje y*/
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+.header {
+    width: 100%;
+    margin: auto;
+    background-color: #ffed02;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+}
+
+.header .btn-menu {
+    float: left;
+    line-height: 70px;
+    margin-left: 5rem;
+}
+
+.header .btn-menu label {
+    font-size: 25px;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+}
+
+/*Menu Lateral*/
+#btn-menu {
+    display: none;
+}
+
+.container-menu {
+    position: absolute;
+    background: rgba(3, 0, 0, 0.7);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 90;
+}
+
+#btn-menu:checked ~ .container-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cont-menu {
+    width: 100%;
+    max-width: 250px;
+    background: #1c1c1c;
+    height: 100vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+    z-index: 50;
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu{
+    transform: translateX(0%);
+}
+
+.cont-menu nav {
+    transform: translateY(15%);
+}
+
+.cont-menu nav a {
+    display: block;
+    text-decoration: none;
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 500ms ease;
+    font-size: 2rem;
+}
+
+.cont-menu nav a:hover {
+    border-left: 5px solid #fff;
+    background: #17a2ff;
+    color: #000;
+}
+
+.cont-menu label {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/*Buscador*/
+
+.buscador {
+    position: absolute;
+    left: 68%;
+    top: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.buscador input {
+    outline: none;
+    box-sizing: border-box;
+    height: 60px;
+    width: 0;
+    padding: 0 20px;
+    color: #000;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 1px solid #D50000;
+    transition: all .7s ease;
+}
+
+::placeholder {
+    color: gray;
+}
+
+.btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    background: #D50000;
+    line-height: 80px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn i {
+    font-size: 25px;
+    color: white;
+    line-height: 80px;
+    transition: all .7s ease;
+}
+
+.buscador:hover input {
+    width: 350px;
+}
+
+.buscador:hover i {
+    transform: rotate(-360deg);
+}
+
+.btn:hover {
+    background: #cc0000;
+}
+
+/*Boton agregar libro*/
+
+.btnAgregar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    border: none;
+    outline: none;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    margin-right: 5rem;
+    width: 17rem;
+    height: 4rem;
+}
+
+
+.btnAgregar span{
+    font-weight: 600;
+    transition: .4s ease-in-out all;
+    position: absolute;
+    left: 20%; /*calcular*/
+}
+
+.btnAgregar:hover {
+    background: #fff;
+}
+
+.btnAgregar .icono-boton-agregar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    left: -40px;
+    transition: .3s ease-in-out all;
+    opacity: 0;
+}
+
+.btnAgregar i {
+    color: #000;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.btnAgregar:hover .icono-boton-agregar {
+    left: calc(100% - 5rem);
+    opacity: 1;
+}
+
+.btnAgregar:hover span {
+    left: 10px;
+}
+
+/*Botón Cerrar Sesion*/
+
+.butn {
+    position: relative;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.6s ease;
+}
+
+.butn:hover{
+    background-color: #001a2b;
+    box-shadow: 0 0 2rem #17a2ff;
+    border-color: #17a2ff;
+}
+
+.butn span:nth-child(n) {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid;
+    transition: all 0.6s ease;
+}
+
+.butn span:nth-child(1) {
+    right: 10%;
+    top: -10px;
+    background-color: #fff;
+}
+
+.butn span:nth-child(2) {
+    left: 10%;
+    bottom: -10px;
+    background-color: #001a2b;
+}
+
+.butn:hover span:nth-child(1) {
+    right: 80%;
+    transform: rotate(90deg);
+    color: #17a2ff;
+    background-color: #17a2ff;
+}
+
+.butn:hover span:nth-child(2) {
+    left: 80%;
+    transform: rotate(90deg);
+    color: #17a2ff;
+}
+
+.btnCerrarSesion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.8rem;
+    border: 3px solid;
+}
+
+
+/* ===================== SECCION MAIN ===================== */
+
+.main {
+    position: relative;
+    height: 60vh;
+    
+}
+
+
+/*Boton para ir arriba*/
+.ir-arriba {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    bottom: 30px;
+    right: 30px;
+    background: #fff;
+    border-radius: 5rem;
+    text-align: center;
+    z-index: 80;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+
+.ir-arriba:hover {
+    color: orangered;
+}
