@@ -37,7 +37,7 @@
     </header>
 
     <main class="main">
-        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; top: 15vh; height: 42rem;">
+        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem;">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -65,13 +65,38 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-
         </section>
-        
         <a class="ir-arriba">
             <i class="fa-solid fa-circle-arrow-up fa-beat-fade" style="font-size: 4.5rem; box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.5); border-radius: 5rem;"></i>
         </a>
     </main>
+    
+    <section class="tarjetas">
+      <div class="contenedor" id="contenedor"></div>
+      <div class="contenido" id="contenido"></div>
+    
+      <template id="cardBook">
+        <div class="card">
+          <img src="" alt="" class="card-img-top imgStyle">
+          <div class="card-body cardStyle">
+            <div class="titulo"></div>
+            <ul class="card-text">
+              <li><strong>Autor:</strong> <span class="author"></span></li>
+              <li><strong>Categoría:</strong> <span class="category"></span></li>
+              <li><strong>Año:</strong> <span class="anio"></span></li>
+              <li><strong>Disponibilidad:</strong> <span class="availabity"></span></li>
+            </ul>
+            <a href="" class="Apartar btn-danger">
+              Apartar
+            </a>
+            <a href="" class="Eliminar btn-danger">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        </div>
+      </template>
+      
+    </section>
 
     <!--Menu Lateral-->
     <input type="checkbox" name="" id="btn-menu">
@@ -79,12 +104,12 @@
         <div class="cont-menu">
             <h2 style="color: wheat; padding-left: 25px; padding-top: 25px;">Categorías</h2>
             <nav>
-                <a href="">Romance</a>
-                <a href="">Terror</a>
-                <a href="">Comedia</a>
-                <a href="">Crimen</a>
-                <a href="">Ciencia Ficción</a>
-                <a href="">Astrología</a>                
+                <a href="" class="category">Romance</a>
+                <a href="" class="category">Terror</a>
+                <a href="" class="category">Comedia</a>
+                <a href="" class="category">Crimen</a>
+                <a href="" class="category">Ciencia Ficción</a>
+                <a href="" class="category">Astrología</a>                
             </nav>
             <div style="position: absolute; top: 58rem; left: 3rem; right: 3rem;">
                 <a href="#" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
@@ -97,8 +122,8 @@
         </div>
     </div>
     
-    <script type="module" src="./js/firebase_connection.js"></script>
     <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/firebase_connection.js"></script>
     <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
