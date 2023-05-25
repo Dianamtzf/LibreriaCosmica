@@ -16,7 +16,6 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
     z-index: 10;
 }
 
@@ -105,7 +104,7 @@ html {
 .buscador {
     position: absolute;
     left: 68%;
-    top: 50%; 
+    top: 7%; 
     transform: translate(-50%, -50%);
     padding: 10px;
 }
@@ -305,3 +304,83 @@ html {
 .ir-arriba:hover {
     color: orangered;
 }
+
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    margin: 10px;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .imgStyle {
+    width: 150px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  
+  .cardStyle {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .titulo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .card-text li {
+    margin-bottom: 5px;
+  }
+
+  .card-text li strong {
+    font-size: 16px; /* Tamaño del texto de las etiquetas */
+  }
+  
+  .card-text li span {
+    font-size: 14px; /* Tamaño del texto de los valores */
+  }
+  
+  
+  .Apartar {
+    color: white;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .Apartar i {
+    margin-right: 5px;
+  }
+
+  .Eliminar {
+    margin-left: 343px;
+    color: white;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  
+
+
