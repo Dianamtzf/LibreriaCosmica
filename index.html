@@ -76,6 +76,8 @@
                 <img src="./images/user.png" alt="User Icon">
             </div>
             <h1 class="text-center">Iniciar Sesión</h1>
+
+            <!--
             <label for="email">Correo:</label>
             <input
                 type="text"
@@ -91,15 +93,39 @@
                 id="password_l"
                 placeholder="Ingrese su contraseña"
                 required
-            >
+            > -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <div class="inputBox" style="margin-top: 20px; width: 100%;">
+                    <input
+                        type="text"
+                        name="email"
+                        id="email_l"
+                        required
+                    >
+                    <span>Correo</span>
+                </div>
+                <div class="inputBox" style="margin-top: 10px; width: 100%;">
+                    <input
+                        type="password"
+                        name="password"
+                        id="password_l"
+                        required
+                    >
+                    <span>Contraseña</span>
+                </div>
+            </div>
+            
             <input
                 type="submit"
                 class="login btn btn-warning"
                 value="Ingresar"
                 name="login_submit"
             >
-            <span>¿Aún no tienes una cuenta?</span>
-            <a href="#" id="registerLink">Registrate</a>
+            <div style="text-align: center;">
+                <span>¿Aún no tienes una cuenta?</span>
+                <a href="#" id="registerLink">Registrate</a>
+            </div>
+            
             <label style="text-align: center; padding: 7px;">------------------ OR ------------------</label>
             <input
                 type="button"
