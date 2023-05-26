@@ -27,13 +27,31 @@
             </div>
         </div>
 
-        <button class="btnAgregar">
-            <div class="icono-boton-agregar">
-                <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
-            </div>
-            <span>Agregar Libro</span>
-            
+        <button class="btnAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div class="icono-boton-agregar">
+              <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
+          </div>
+          <span>Agregar Libro</span>
         </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Libro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </header>
 
     <main class="main">
