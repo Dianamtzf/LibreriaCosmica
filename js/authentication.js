@@ -164,6 +164,7 @@ loginGoog.addEventListener('click', (e) => {
     });
 });
 
+
 //logout
 /*const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
