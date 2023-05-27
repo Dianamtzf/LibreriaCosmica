@@ -274,6 +274,78 @@ html {
     border: 3px solid;
 }
 
+/*FORMULARIO PARA SUBIR LIBROS*/
+
+/*
+.formulario{
+    width: 300px;
+    height: 300px;
+    font-family: inherit;
+    background-color: #151D22;
+    box-shadow: 2px 2px 6px rgba(255, 255, 255, 0.1);
+    padding: 40px 20px;
+    border-radius: 5px;
+}*/
+
+.formulario .field {
+    width: 100%;
+    position: relative;
+    margin-bottom: 32px;
+}
+
+/*Input*/
+.formulario .field .input{
+    width: 100%;
+    font-family: 'Varela Round', sans-serif;
+    padding: 10px;
+    color: #000;
+    
+    border: 1px solid #000;
+    transition: all .3s ease-in-out;
+}
+
+/*Label*/
+.formulario .field .label{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.4);
+    transition: all .3s ease-in-out;
+}
+
+/*Input animado*/
+.formulario .field .input::placeholder {
+    opacity: 0;
+    color: rgba(0, 0, 0, 0.4);
+    transition: all .3s ease-in-out;
+}
+
+.formulario .field .input:hover,
+.formulario .field .input:focus,
+.formulario .field .input:not(:placeholder-shown) {
+    border: 1px solid blue;
+    transition: all .3s ease-in-out;
+}
+
+.formulario .field .input:focus::placeholder {
+    opacity: 1;
+}
+
+.formulario .field .input:focus + .label,
+.formulario .field .input:not(:placeholder-shown) + .label{
+    top: -40%;
+    transform: translateY(50%);
+    left: 8px;
+    font-size: 12px;
+    padding: 0 8px;
+    color: #000;
+    background-color: #fff;
+    transition: all .3s ease-in-out;
+}
 
 /* ===================== SECCION MAIN ===================== */
 
@@ -285,6 +357,8 @@ html {
 
 
 /*Boton para ir arriba*/
+
+/*
 .ir-arriba {
     position: fixed;
     width: 55px;
@@ -303,7 +377,39 @@ html {
 
 .ir-arriba:hover {
     color: orangered;
+} */
+
+#button-up{
+    width: 6rem;
+    height: 6rem;
+    background: #46a2fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50%;
+    font-size: 2rem;
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    cursor: pointer;
+    border: 4px solid transparent;
+    transition: all 300ms ease;
+    transform: scale(0);
 }
+
+#button-up:hover{
+    transform: scale(1.1);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+/*TARJETAS*/
 
 .contenido {
     display: flex;

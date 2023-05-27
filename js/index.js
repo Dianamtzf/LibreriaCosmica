@@ -27,17 +27,45 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     });
 })
 
+// --------------- Scroll up button ---------------
 
-const main = () => {
+document.getElementById("button-up").addEventListener("click", scrollUp)
+
+function scrollUp() {
+    var currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+    if(currentScroll > 0) {
+        window.requestAnimationFrame(scrollUp)
+        window.scrollTo(0, currentScroll - (currentScroll / 5))
+        buttonUp.style.transform = "scale(0)"
+    }
+}
+
+var buttonUp = document.getElementById("button-up")
+
+window.onscroll = function() {
+    var scroll = document.documentElement.scrollTop
+    if(scroll > 200) {
+        buttonUp.style.transform = "scale(1)"
+    } else if (scroll < 200) {
+        buttonUp.style.transform = "scale(0)"
+    }
+} 
+
+
+
+function main() {
 
     // Aquí van las llamadas a las demás funciones y listeners
     creaCards()
 
 
-    btnAgregar.addEventListener('click', e => {
-        e.preventDefault(); // Evita que se refresque la página
-        insertBook()
+    btnAgregar.addEventListener('click', async () => {
+        await insertBook()
+        setTimeout(function () {
+            window.location.reload()
+        }, 1000)
     })
+
 
 }
 // ---------------- Funciones ------------------
