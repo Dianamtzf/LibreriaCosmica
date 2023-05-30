@@ -289,6 +289,32 @@ html {
     background: #722b85;
 }
 
+/*Boton cerrar modal (agregar libro)*/
+
+.btnCerrarModal {
+    width: 8rem;
+    height: 3rem;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    background-color: #666163;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-right: 1.2rem;
+}
+
+.btnCerrarModal:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.btnAdd:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+
 /*Boton agregar libro*/
 
 .btnAgregar {
@@ -316,6 +342,8 @@ html {
 
 .btnAgregar:hover {
     background: #fff;
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
 }
 
 .btnAgregar .icono-boton-agregar {

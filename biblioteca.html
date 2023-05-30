@@ -106,10 +106,10 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header" style="background-color: #171f26;">
+            <div class="modal-content" style="border-radius: 3.3rem;">
+              <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
                 <h5 class="modal-title" id="exampleModalLabel" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Agregar Libro</h5>
-                <button type="button" class="btn-close" style="color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                
               </div>
               <div class="modal-body">
                 <form name="formulario" class="formulario">
@@ -186,7 +186,7 @@
                       </div>
                     
                       <div class="modal-footer">
-                        <button type="button" class="btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
                         <!--BOTON SUBMIT FORM-->
                         <input
                           type="submit"
@@ -194,6 +194,15 @@
                           id="addButton"
                           value="Agregar Libro"
                           onclick="cerrarModal()"
+                          style="width: 10rem;
+                                height: 3rem;
+                                border-radius: 1rem;
+                                outline: none;
+                                border: none;
+                                background-color: #31a252;
+                                font-size: 1.2rem;
+                                color: #fff;
+                                font-weight: 700;"
                         >
                         <!--<button type="button" class="btn-primary">Save changes</button>-->
                       </div>

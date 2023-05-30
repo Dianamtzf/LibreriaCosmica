@@ -102,7 +102,7 @@ const insertBook = async () => {
 
 
 //Evento click en las categorías del menú lateral
-document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
+document.querySelectorAll('.dropdown-content li').forEach((categoria) => {
   categoria.addEventListener('click', (e) => {
     e.preventDefault();
     categoriaSeleccionada = categoria.textContent;
