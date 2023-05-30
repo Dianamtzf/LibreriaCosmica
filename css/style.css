@@ -373,6 +373,8 @@ html {
     text-decoration: none;
     margin-left: 10px;
     margin-bottom: 5px;
+    background-color: purple;
+    font-size: medium;
   }
   
   .Eliminar {
