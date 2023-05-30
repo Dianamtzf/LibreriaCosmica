@@ -317,7 +317,7 @@ html {
     width: 600px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
@@ -331,6 +331,7 @@ html {
   }
   
   .cardStyle {
+    position: relative;
     flex: 1;
     padding: 10px;
     text-align: left;
@@ -349,7 +350,7 @@ html {
   }
   
   .card-text li {
-    margin-bottom: 5px;
+    margin-bottom: 12px;
   }
 
   .card-text li strong {
@@ -362,27 +363,33 @@ html {
   
   
   .Apartar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     color: white;
     background-color: #007bff;
-    padding: 5px 10px;
+    padding: 11px 10px;
     border-radius: 5px;
     text-decoration: none;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-color: purple;
+    font-size: medium;
   }
   
-  .Apartar i {
-    margin-right: 5px;
-  }
-
   .Eliminar {
-    margin-left: 343px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     color: white;
     background-color: #007bff;
-    padding: 5px 10px;
+    padding: 11px 10px;
     border-radius: 5px;
     text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 5px;
   }
 
 
-  
   
   
