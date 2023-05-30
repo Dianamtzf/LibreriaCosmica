@@ -93,7 +93,6 @@ const creaCards = (books) => {
         cardBook.querySelector('.category').textContent = item.lib_categoria
         cardBook.querySelector('.anio').textContent = item.lib_anio
         cardBook.querySelector('.author').textContent = item.lib_autor
-        cardBook.querySelector('.availabity').textContent = item.lib_disponibilidad
 
         const clone = cardBook.cloneNode(true)
         fragment.appendChild(clone)
