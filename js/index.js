@@ -1,7 +1,8 @@
-import {  getLibros, saveLibro } from './firebase_connection.js' // Imports the querys
+import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
 
 const form = document.querySelector(".formulario") // Selects the form
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
+const Buscar = document.getElementById('inBuscador') 
 
 //---------------Carga de tarjetas---------------------
 
@@ -16,28 +17,27 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
     console.log('libros:', libros)
     main()
-
-    const enlacesCategoria = document.querySelectorAll('a[data-value]');
-    enlacesCategoria.forEach(enlace => {
-        enlace.addEventListener('click', (e) => {
-            e.preventDefault();
-            const categoria = enlace.dataset.value;
-            filtrarPorCategoria(categoria);
-        });
-    });
 })
 
 
 const main = () => {
 
     // Aquí van las llamadas a las demás funciones y listeners
-    creaCards()
-
-
-    btnAgregar.addEventListener('click', e => {
+    creaCards(libros)
+    /*btnAgregar.addEventListener('click', e => {
         e.preventDefault(); // Evita que se refresque la página
         insertBook()
-    })
+    })*/
+
+    //Función para buscar por nombre de libro o de autor
+    Buscar.addEventListener('keyup', () => {
+        console.log('Si llega aquí');
+        let temp = libros.filter(book => 
+            book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
+            book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase())
+        );
+        creaCards(temp);
+    });
 
 }
 // ---------------- Funciones ------------------
@@ -71,21 +71,22 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
   categoria.addEventListener('click', (e) => {
     e.preventDefault();
     categoriaSeleccionada = categoria.textContent;
-    contenido.innerHTML = '';
-    creaCards();
+    if(categoriaSeleccionada == 'Prestados'){
+        let librosPrestados = []
+        librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+        creaCards(librosPrestados);
+    } else {
+        let librosFiltrados = []
+        librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
+        creaCards(librosFiltrados);
+    }
   });
 });
 
 //Tarjetas
-const creaCards = () => {
-    let librosFiltrados = libros;
-  
-    // Filtrar los libros por categoría seleccionada
-    if (categoriaSeleccionada) {
-      librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
-    }
-
-    librosFiltrados.forEach((item) => {
+const creaCards = (books) => {
+    contenido.innerHTML = '';
+    books.forEach((item) => {
         console.log(item)
         cardBook.querySelector('img').setAttribute('src', item.lib_img)
         cardBook.querySelector('.titulo').textContent = item.lib_titulo

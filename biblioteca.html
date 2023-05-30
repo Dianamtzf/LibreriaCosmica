@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo.ico"></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Books🤠</title>
+    <title>Librería Cósmica</title>
 </head>
 <body>
     <header class="header">
@@ -18,10 +19,12 @@
         </div>
         
         <div style="position: absolute; left: 33rem;">
+          <a href="#" onclick="location.reload();">
             <img src="images/new_logo.png" alt="" style="width: 16rem; height: 9rem;">
+          </a>
         </div>
         <div class="buscador">
-            <input type="text" placeholder="Buscar" style="font-family: 'Baloo 2', cursive;">
+            <input type="text" placeholder="Buscar por título o autor" id="inBuscador" style="font-family: 'Baloo 2', cursive;">
             <div class="btn">
                 <i class="fa fa-search"></i>
             </div>
@@ -37,7 +40,7 @@
     </header>
 
     <main class="main">
-        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; top: 15vh; height: 42rem;">
+        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem;">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -109,10 +112,11 @@
                 <a href="" class="category">Comedia</a>
                 <a href="" class="category">Crimen</a>
                 <a href="" class="category">Ciencia Ficción</a>
-                <a href="" class="category">Astrología</a>                
+                <a href="" class="category">Astrología</a>   
+                <a href="" class="category">Prestados</a>                
             </nav>
             <div style="position: absolute; top: 58rem; left: 3rem; right: 3rem;">
-                <a href="#" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
+                <a href="./" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
                     <span></span>
                     <span></span>
                 </i></a>
