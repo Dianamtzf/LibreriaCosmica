@@ -32,10 +32,13 @@ const main = () => {
     //Función para buscar por nombre de libro o de autor
     Buscar.addEventListener('keyup', () => {
         console.log('Si llega aquí');
-        let temp = libros.filter(book => 
-            book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
-            book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase())
+        let temp = libros.filter(book =>
+            book && book.lib_titulo && book.lib_autor &&
+            (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
+            book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
+
         );
+
         creaCards(temp);
     });
 
