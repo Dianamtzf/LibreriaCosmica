@@ -96,6 +96,7 @@ function main() {
             (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
             book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
         );
+
         creaCards(temp);
     });
 
@@ -127,6 +128,7 @@ async function insertBook() {
         lib_titulo: form.titulo.value,
         lib_disponibilidad: true,
         // 
+        
         pres_correo: null,
         pres_domicilio: null,
         pres_fecha_fin: null,
@@ -144,21 +146,23 @@ async function insertBook() {
 
 
 //Evento click en las categorías del menú lateral
-document.querySelectorAll('.dropdown-content li').forEach((categoria) => {
-  categoria.addEventListener('click', (e) => {
-    e.preventDefault();
-    categoriaSeleccionada = categoria.textContent;
-    if(categoriaSeleccionada == 'Prestados'){
-        let librosPrestados = []
-        librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-        creaCards(librosPrestados);
-    } else {
-        let librosFiltrados = []
-        librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
-        creaCards(librosFiltrados);
-    }
+document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
+    categoria.addEventListener('click', (e) => {
+      e.preventDefault();
+      categoriaSeleccionada = categoria.textContent;
+      if(categoriaSeleccionada == 'Prestados'){
+          let librosPrestados = []
+          librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+          creaCards(librosPrestados);
+      } else {
+          let librosFiltrados = []
+          librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
+          creaCards(librosFiltrados);
+      }
+      const menuCheckbox = document.getElementById('btn-menu');
+      menuCheckbox.checked = false; // Cierra el menú al hacer clic en una categoría
+    });
   });
-});
 
 
 

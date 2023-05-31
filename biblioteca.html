@@ -23,6 +23,11 @@
               </i></a>
             </div> -->
         
+        <div class="btn-menu">
+            <label for="btn-menu" class="icon-menu">
+              <i class="fa-solid fa-bars" style="font-size: 3rem;"></i>
+            </label>
+        </div>
         
         <div style="position: absolute; left: 33rem;">
           <a href="#" onclick="location.reload();">
@@ -30,7 +35,7 @@
           </a>
         </div>
         <div class="buscador">
-            <input type="text" placeholder="Buscar" style="font-family: 'Varela Round', sans-serif;">
+            <input type="text" placeholder="Buscar por título o autor" id="inBuscador" style="font-family: 'Varela Round', sans-serif;">
             <div class="btn">
                 <i class="fa fa-search"></i>
             </div>
@@ -159,7 +164,7 @@
     </header>
 
     <main class="main">
-        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem;">
+        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem; margin-top: 10rem;">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -188,10 +193,7 @@
                 </button>
               </div>
         </section>
-        <!--
-        <a class="ir-arriba">
-            <i class="fa-solid fa-circle-arrow-up fa-beat-fade" style="font-size: 4.5rem; box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.5); border-radius: 5rem;"></i>
-        </a>-->
+   
     </main>
     
     <section class="tarjetas">
@@ -264,18 +266,7 @@
 
     <!--Menu Lateral-->
 
-    <nav class="nav">
-      <div class="nav-container">
-        
-
-      </div>
-    </nav>
-
-
-    
-
-    <!--
-    <input type="checkbox" name="" id="btn-menu">  
+    <input type="checkbox" name="" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <h2 style="color: wheat; padding-left: 25px; padding-top: 25px;">Categorías</h2>
@@ -285,19 +276,19 @@
                 <a href="" class="category">Comedia</a>
                 <a href="" class="category">Crimen</a>
                 <a href="" class="category">Ciencia Ficción</a>
-                <a href="" class="category">Astrología</a>   
+                <a href="" class="category">Astrología</a>  
                 <a href="" class="category">Prestados</a>                
             </nav>
-            <div style="position: absolute; top: 50rem; left: 3rem; right: 3rem;">
+
+            <div style="position: absolute; top: 58rem; left: 3rem; right: 3rem;">
                 <a href="./" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
                     <span></span>
                     <span></span>
                 </i></a>
             </div>
-            
             <label for="btn-menu" class="icon-equis"><i class="fa-solid fa-arrow-left" style="margin-right: 10px; font-size: 25px; margin-top: 15px;"></i></label>
         </div>
-    </div> -->
+    </div>
 
     <div id="button-up">
       <i class="fa-solid fa-chevron-up"></i>
@@ -307,12 +298,7 @@
     <script type="module" src="./js/firebase_connection.js"></script>
     <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
-      function cerrarModal() {
-          document.querySelector('#addButton').setAttribute('data-bs-dismiss', 'modal')
-        }
-
-    </script>
+    
 
 </body>
 </html>

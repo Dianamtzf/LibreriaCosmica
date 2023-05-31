@@ -12,11 +12,12 @@ html {
     width: 100%;
     margin: auto;
     background-color: #ffed02;
-    height: 15vh;
+    height: 11vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    position: fixed;
 }
 
 .header .btn-menu {
@@ -155,11 +156,6 @@ html {
 
 
 
-
-
-
-
-/*
 #btn-menu {
     display: none;
 }
@@ -180,6 +176,7 @@ html {
 #btn-menu:checked ~ .container-menu {
     opacity: 1;
     visibility: visible;
+    position: fixed;
 }
 
 .cont-menu {
@@ -224,14 +221,15 @@ html {
     color: #fff;
     cursor: pointer;
     font-size: 18px;
-} */
+} 
+
 
 /*Buscador*/
 
 .buscador {
     position: absolute;
     left: 68%;
-    top: 7%; 
+    top: 48%; 
     transform: translate(-50%, -50%);
     padding: 10px;
 }
@@ -641,8 +639,7 @@ html {
     margin-right: 10px;
     margin-bottom: 5px;
   }
-  
-  
-  
 
 
+  
+  
