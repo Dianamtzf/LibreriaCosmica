@@ -54,6 +54,7 @@ const deleteLibro = async (lib) => {
         console.log("Libro deleted: ", lib.libro_titulo);
     } catch (error) {
         console.error("Error! Couldn't delete the book: ", error);
+        alert('Algo salio mal')
     }
   }
 
