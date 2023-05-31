@@ -60,12 +60,14 @@ const deleteLibro = async (lib) => {
   // UPDATE
   const updateLibro = async (sendData) => {
     try {
-        const libroRef = doc(libros, sendData.id);
-        await updateDoc(libroRef, sendData);
-        console.log("Libro updated successfully:", sendData.libro_titulo);
+      const libroRef = doc(libros, sendData.libro_id);
+      await updateDoc(libroRef, sendData);
+      console.log("Libro actualizado correctamente:", sendData.libro_titulo);
     } catch (error) {
-        console.error("Error! Couldn't update the book:", error);
+      console.error("¡Error! No se pudo actualizar el libro:", error);
     }
   }
+  
+  
 
 export { getLibros, saveLibro, deleteLibro, updateLibro }

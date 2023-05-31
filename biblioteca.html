@@ -89,17 +89,103 @@
               <li><strong>Año:</strong> <span class="anio"></span></li>
               
             </ul>
-            <a href="" class="Apartar btn-danger">
+            <button type="button" class="Apartar btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-book-id="">
               Apartar
-            </a>
-            <a href="" class="Eliminar btn-danger">
+            </button>
+            <a href="" class="Eliminar">
               <i class="fa-solid fa-trash"></i>
             </a>
           </div>
         </div>
       </template>
-      
     </section>
+
+       <!-- Modal -->
+       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title titulo-modal" id="staticBackdropLabel">Apartar Libro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form name="formApartar" class="formApartar">
+                <fieldset>
+                  <label for="name" class="etiqueta-label">Nombre del Solicitante:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="input-formulario"
+                    placeholder="Nombre"
+                    style="width: 100%"
+                    required
+                  >
+                  <label for="correo" class="etiqueta-label">Correo Electrónico:</label>
+                  <input
+                    type="email"
+                    name="correo"
+                    id="correo"
+                    class="input-formulario"
+                    placeholder="Ingrese su Correo"
+                    style="width: 100%"
+                    required
+                  >
+                  <label for="telefono" class="etiqueta-label">Número de celular:</label>
+                  <input
+                    type="number"
+                    name="telefono"
+                    id="telefono"
+                    class="input-formulario"
+                    placeholder="Ingrese su número de celular"
+                    style="width: 100%"
+                    required
+                  >
+                  <label for="domicilio" class="etiqueta-label">Domicilio:</label>
+                  <input
+                    type="text"
+                    name="domicilio"
+                    id="domicilio"
+                    class="input-formulario"
+                    placeholder="Ingrese su dirección"
+                    style="width: 100%"
+                    required
+                  >
+                  <label for="fechaInicio" class="etiqueta-label">Fecha de Inicio:</label>
+                  <input
+                    type="date"
+                    name="fechaInicio"
+                    id="fechaInicio"
+                    class="input-formulario"
+                    placeholder="Ingrese la Fecha de Inicio"
+                    style="width: 100%"
+                    required
+                  >
+                  <label for="fechaFin" class="etiqueta-label">Fecha Fin:</label>
+                  <input
+                    type="date"
+                    name="fechaFin"
+                    id="fechaFin"
+                    class="input-formulario"
+                    placeholder="Ingrese la fecha final"
+                    style="width: 100%"
+                    required
+                  >
+
+                </fieldset>
+              </form>
+              
+            </div>
+            <div class="pie-modal">
+                <button type="button" class="" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btnAdd" id="btnAdd">Actualizar Libro</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
 
     <!--Menu Lateral-->
     <input type="checkbox" name="" id="btn-menu">
