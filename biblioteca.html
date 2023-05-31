@@ -7,13 +7,22 @@
     <link rel="icon" href="/images/logo.ico"></link>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
     <title>Librería Cósmica</title>
 </head>
 <body>
     <header class="header">
+      
+      <!--
+            <div style="position: absolute; top: 50rem; left: 3rem; right: 3rem;">
+              <a href="./" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
+                  <span></span>
+                  <span></span>
+              </i></a>
+            </div> -->
+        
         <div class="btn-menu">
             <label for="btn-menu" class="icon-menu">
               <i class="fa-solid fa-bars" style="font-size: 3rem;"></i>
@@ -26,19 +35,132 @@
           </a>
         </div>
         <div class="buscador">
-            <input type="text" placeholder="Buscar por título o autor" id="inBuscador" style="font-family: 'Baloo 2', cursive;">
+            <input type="text" placeholder="Buscar por título o autor" id="inBuscador" style="font-family: 'Varela Round', sans-serif;">
             <div class="btn">
                 <i class="fa fa-search"></i>
             </div>
         </div>
 
-        <button class="btnAgregar">
-            <div class="icono-boton-agregar">
-                <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
-            </div>
-            <span>Agregar Libro</span>
-
+        <button class="btnAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div class="icono-boton-agregar">
+              <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
+          </div>
+          <span>Agregar Libro</span>
         </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 2.3rem;">
+              <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
+                <h5 class="modal-title" id="exampleModalLabel" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Agregar Libro</h5>
+                
+              </div>
+              <div class="modal-body">
+                <form name="formulario" class="formulario">
+                  <fieldset>
+                      <!--TITULO-->
+                      <div class="field">
+                        <input
+                          type="text"
+                          name="titulo"
+                          class="input"
+                          id="titulo"
+                          style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px;"
+                          placeholder="Ingresa el titulo del libro"
+                          required
+                        >
+                        <label for="" class="label">Titulo</label>
+                      </div>
+                      
+                      <!--PORTADA-->
+                      <div class="field">
+                        <input
+                          type="url"
+                          name="portada"
+                          class="input"
+                          id="portada"
+                          style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px;"
+                          placeholder="Ingresa el URL de la portada"
+                          required
+                        >
+                        <label for="" class="label">URL de la portada</label>
+                      </div>
+                      
+                      <!--AUTOR-->
+                      <div class="field">
+                        <input
+                          type="text"
+                          name="autor"
+                          class="input"
+                          id="autor"
+                          style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px;"
+                          placeholder="Ingresa el autor del libro"
+                          required
+                        >
+                        <label for="" class="label">Autor</label>
+                      </div>
+                      
+                      <!--AÑO DE PUBLICACION-->
+                      <div class="field">
+                        <input
+                          type="number"
+                          name="anio"
+                          class="input"
+                          id="anio"
+                          style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px;"
+                          placeholder="Ingresa el año de publicación del libro"
+                          required
+                        >
+                        <label class="label">Año de publicación</label>
+                      </div>
+                      
+                      <!--CATEGORIA-->
+                      <div class="field">
+                        <input
+                          type="text"
+                          name="categ"
+                          class="input"
+                          id="categ"
+                          style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px;"
+                          placeholder="Ingresa la categoría del libro"
+                          required
+                        >
+                        <label for="" class="label">Categoría</label>
+
+                      </div>
+                    
+                      <div class="modal-footer">
+                        <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+                        <!--BOTON SUBMIT FORM-->
+                        
+                        <input
+                          type="submit"
+                          class="btnAdd"
+                          id="addButton"
+                          value="Agregar Libro"
+                          data-bs-dismiss="modal"
+                          style="width: 10rem;
+                                height: 3rem;
+                                border-radius: 1rem;
+                                outline: none;
+                                border: none;
+                                background-color: #31a252;
+                                font-size: 1.2rem;
+                                color: #fff;
+                                font-weight: 700;"
+                        >
+
+                        <!--<button type="submit" class="btnAdd" id="addButton" data-bs-dismiss="modal"></button>-->
+                        <!--<button type="button" class="btn-primary">Save changes</button>-->
+                      </div>
+                  </fieldset>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
     </header>
 
     <main class="main">
@@ -46,19 +168,19 @@
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="images/imagen01.webp" class="d-block w-100" style="height: 40rem;" alt="...">
+                    <img src="images/imagen01.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/imagen02.webp" class="d-block w-100" style="height: 40rem;" alt="...">
+                    <img src="images/imagen02.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/imagen03.png" class="d-block w-100" style="height: 40rem;" alt="...">
+                    <img src="images/imagen03.png" class="d-block w-100" style="height: 30rem;" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/imagen04.webp" class="d-block w-100" style="height: 40rem;" alt="...">
+                    <img src="images/imagen04.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/imagen05.webp" class="d-block w-100" style="height: 40rem;" alt="...">
+                    <img src="images/imagen05.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -71,9 +193,7 @@
                 </button>
               </div>
         </section>
-        <a class="ir-arriba">
-            <i class="fa-solid fa-circle-arrow-up fa-beat-fade" style="font-size: 4.5rem; box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.5); border-radius: 5rem;"></i>
-        </a>
+   
     </main>
     
     <section class="tarjetas">
@@ -83,7 +203,7 @@
       <template id="cardBook">
         <div class="card">
           <img src="" alt="" class="card-img-top imgStyle">
-          <div class="card-body cardStyle">
+          <div class="card-body cardStyle" style="position: relative;">
             <div class="titulo"></div>
             <ul class="card-text">
               <li><strong>Autor:</strong> <span class="author"></span></li>
@@ -91,18 +211,61 @@
               <li><strong>Año:</strong> <span class="anio"></span></li>
               
             </ul>
-            <a href="" class="Apartar btn-danger">
-              Apartar
-            </a>
-            <a href="" class="Eliminar btn-danger">
-              <i class="fa-solid fa-trash"></i>
-            </a>
+
+            <div style="display: flex; 
+                        align-items: center; 
+                        justify-content: space-between; 
+                        margin-left: 20px; 
+                        margin-right: 20px; 
+                        margin-bottom: 10px; 
+                        margin-top: 10px;
+                        position: absolute;
+                        left: 30px;
+                        right: 30px;
+                        bottom: 5px;"
+                      >
+              <a href="" class="Apartar btn-danger">
+                Apartar
+              </a>
+              <button type="button" value="" class="eliminarLibro" id="btnModal-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #fff; border: none;">
+                <a class="fa-solid fa-trash" 
+                style="font-size: 23px;
+                      text-decoration: none;
+                      color: red;
+                      cursor: pointer;"
+                ></a>
+              </button>
+              
+            </div>
+            
           </div>
         </div>
       </template>
       
     </section>
-        <!--Menu Lateral-->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Eliminar Libro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Estas seguro que quieres eliminar este libro?
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnCancel" class="btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" id="btnDelete" class="btn-primary btnEliminarLibro" data-bs-dismiss="modal">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Menu Lateral-->
+
     <input type="checkbox" name="" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
@@ -113,23 +276,29 @@
                 <a href="" class="category">Comedia</a>
                 <a href="" class="category">Crimen</a>
                 <a href="" class="category">Ciencia Ficción</a>
-                <a href="" class="category">Astrología</a>   
+                <a href="" class="category">Astrología</a>  
                 <a href="" class="category">Prestados</a>                
             </nav>
+
             <div style="position: absolute; top: 58rem; left: 3rem; right: 3rem;">
                 <a href="./" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
                     <span></span>
                     <span></span>
                 </i></a>
             </div>
-            
             <label for="btn-menu" class="icon-equis"><i class="fa-solid fa-arrow-left" style="margin-right: 10px; font-size: 25px; margin-top: 15px;"></i></label>
         </div>
+    </div>
+
+    <div id="button-up">
+      <i class="fa-solid fa-chevron-up"></i>
     </div>
     
     <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/firebase_connection.js"></script>
     <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+
 </body>
 </html>
