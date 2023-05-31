@@ -3,6 +3,10 @@ import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_conn
 const form = document.querySelector(".formulario") // Selects the form
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
+const btnBorrar = document.querySelector('#btnDelete')
+const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
+
+
 
 //---------------Carga de tarjetas---------------------
 
@@ -12,10 +16,12 @@ const fragment = document.createDocumentFragment()
 
 let libros = []
 let categoriaSeleccionada = '';
+let librosDelete = {}
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
     console.log('libros:', libros)
+    
     main()
 })
 
@@ -43,21 +49,40 @@ window.onscroll = function() {
     }
 } 
 
+//Tarjetas
+const creaCards = (books) => {
+    contenido.innerHTML = '';
+    books.forEach((item) => {
+        console.log(item)
+        cardBook.querySelector('img').setAttribute('src', item.lib_img)
+        cardBook.querySelector('.titulo').textContent = item.lib_titulo
+        cardBook.querySelector('.category').textContent = item.lib_categoria
+        cardBook.querySelector('.anio').textContent = item.lib_anio
+        cardBook.querySelector('.author').textContent = item.lib_autor
+
+        const clone = cardBook.cloneNode(true)
+        clone.querySelector('#btnModal-delete').addEventListener('click', () => {
+            librosDelete = item
+            console.log('Libro para borrar =>', librosDelete)
+        })
+        fragment.appendChild(clone)
+    })
+    contenido.appendChild(fragment)
+}
 
 
 function main() {
 
-    // Aquí van las llamadas a las demás funciones y listeners
     creaCards(libros)
-
-
     btnAgregar.addEventListener('click', async () => {
         await insertBook()
         setTimeout(function () {
             window.location.reload()
         }, 1000)
     })
-    creaCards(libros)
+
+    
+    
     /*btnAgregar.addEventListener('click', e => {
         e.preventDefault(); // Evita que se refresque la página
         insertBook()
@@ -66,9 +91,10 @@ function main() {
     //Función para buscar por nombre de libro o de autor
     Buscar.addEventListener('keyup', () => {
         console.log('Si llega aquí');
-        let temp = libros.filter(book => 
-            book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
-            book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase())
+        let temp = libros.filter(book =>
+            book && book.lib_titulo && book.lib_autor &&
+            (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
+            book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
         );
         creaCards(temp);
     });
@@ -77,8 +103,21 @@ function main() {
 }
 // ---------------- Funciones ------------------
 
+btnBorrar.addEventListener('click', async() => {
+    console.log('Entra al EventListener de btnBorrar')
+    await deleteLibro(librosDelete)
+    librosDelete = {}
+    window.location.reload()
+})
+
+btnCancelar.addEventListener('click', () => {
+    librosDelete = {}
+})
+
+
+
 // Funcion para añadir un libro
-const insertBook = async () => {
+async function insertBook() {
     // Data to be added to the database
     const sendData = {
         lib_anio: form.anio.value,
@@ -101,6 +140,9 @@ const insertBook = async () => {
 
 
 
+
+
+
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.dropdown-content li').forEach((categoria) => {
   categoria.addEventListener('click', (e) => {
@@ -118,22 +160,6 @@ document.querySelectorAll('.dropdown-content li').forEach((categoria) => {
   });
 });
 
-//Tarjetas
-const creaCards = (books) => {
-    contenido.innerHTML = '';
-    books.forEach((item) => {
-        console.log(item)
-        cardBook.querySelector('img').setAttribute('src', item.lib_img)
-        cardBook.querySelector('.titulo').textContent = item.lib_titulo
-        cardBook.querySelector('.category').textContent = item.lib_categoria
-        cardBook.querySelector('.anio').textContent = item.lib_anio
-        cardBook.querySelector('.author').textContent = item.lib_autor
-
-        const clone = cardBook.cloneNode(true)
-        fragment.appendChild(clone)
-    })
-    contenido.appendChild(fragment)
-}
 
 
 

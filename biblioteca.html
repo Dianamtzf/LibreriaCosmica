@@ -14,74 +14,14 @@
 </head>
 <body>
     <header class="header">
-      <nav class="nav">
-        <div class="nav-container">
-          <a href="#menu" class="nav-menu">
-            <img src="/images/menu.svg" alt="" class="nav-icon">
-          </a>
-
-          <a href="#" class="nav-menu nav-menu-second">
-            <img src="/images/close.svg" alt="" class="nav-icon">
-          </a>
-
-          <ul class="dropdown" id="menu">
-            <li class="dropdown-list">
-              <a href="#" class="dropdown-link">
-                <i class="fa-regular fa-puzzle dropdown-icon" style="color: #fff;"></i>
-                <span class="dropdown-span" style="font-family: 'Varela Round', sans-serif; font-size: 15px;">Categorías</span>
-                <img src="/images/down.svg" class="dropdown-arrow">
-                <input type="checkbox" class="dropdown-check">
-              </a>
-
-              <div class="dropdown-content">
-                <ul class="dropdown-sub">
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Romance</a>
-                  </li>
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Terror</a>
-                  </li>
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Comedia</a>
-                  </li>
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Crimen</a>
-                  </li>
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Ciencia Ficción</a>
-                  </li>
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Astrología</a>
-                  </li>
-                </ul>
-
-              </div>
-            </li>
-            <li class="dropdown-list">
-              <a href="#" class="dropdown-link">
-                <i class="fa-regular fa-puzzle dropdown-icon" style="color: #fff;"></i>
-                <span class="dropdown-span" style="font-family: 'Varela Round', sans-serif; font-size: 15px;">Libros</span>
-                <img src="/images/down.svg" class="dropdown-arrow">
-                <input type="checkbox" class="dropdown-check">
-              </a>
-
-              <div class="dropdown-content">
-                <ul class="dropdown-sub">
-                  <li class="dropdown-li">
-                    <a href="" class="dropdown-anchor">Apartados</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+      
+      <!--
             <div style="position: absolute; top: 50rem; left: 3rem; right: 3rem;">
               <a href="./" class="butn btnCerrarSesion">Cerrar Sesión <i class="fa-solid fa-arrow-right-from-bracket" style="margin-left: 1.5rem;">
                   <span></span>
                   <span></span>
               </i></a>
-            </div>
-          </ul>
-        </div>
-      </nav>
+            </div> -->
         
         
         <div style="position: absolute; left: 33rem;">
@@ -106,7 +46,7 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 3.3rem;">
+            <div class="modal-content" style="border-radius: 2.3rem;">
               <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
                 <h5 class="modal-title" id="exampleModalLabel" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Agregar Libro</h5>
                 
@@ -188,12 +128,13 @@
                       <div class="modal-footer">
                         <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
                         <!--BOTON SUBMIT FORM-->
+                        
                         <input
                           type="submit"
                           class="btnAdd"
                           id="addButton"
                           value="Agregar Libro"
-                          onclick="cerrarModal()"
+                          data-bs-dismiss="modal"
                           style="width: 10rem;
                                 height: 3rem;
                                 border-radius: 1rem;
@@ -204,6 +145,8 @@
                                 color: #fff;
                                 font-weight: 700;"
                         >
+
+                        <!--<button type="submit" class="btnAdd" id="addButton" data-bs-dismiss="modal"></button>-->
                         <!--<button type="button" class="btn-primary">Save changes</button>-->
                       </div>
                   </fieldset>
@@ -258,7 +201,7 @@
       <template id="cardBook">
         <div class="card">
           <img src="" alt="" class="card-img-top imgStyle">
-          <div class="card-body cardStyle">
+          <div class="card-body cardStyle" style="position: relative;">
             <div class="titulo"></div>
             <ul class="card-text">
               <li><strong>Autor:</strong> <span class="author"></span></li>
@@ -266,17 +209,58 @@
               <li><strong>Año:</strong> <span class="anio"></span></li>
               
             </ul>
-            <a href="" class="Apartar btn-danger">
-              Apartar
-            </a>
-            <a href="" class="Eliminar btn-danger">
-              <i class="fa-solid fa-trash"></i>
-            </a>
+
+            <div style="display: flex; 
+                        align-items: center; 
+                        justify-content: space-between; 
+                        margin-left: 20px; 
+                        margin-right: 20px; 
+                        margin-bottom: 10px; 
+                        margin-top: 10px;
+                        position: absolute;
+                        left: 30px;
+                        right: 30px;
+                        bottom: 5px;"
+                      >
+              <a href="" class="Apartar btn-danger">
+                Apartar
+              </a>
+              <button type="button" value="" class="eliminarLibro" id="btnModal-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #fff; border: none;">
+                <a class="fa-solid fa-trash" 
+                style="font-size: 23px;
+                      text-decoration: none;
+                      color: red;
+                      cursor: pointer;"
+                ></a>
+              </button>
+              
+            </div>
+            
           </div>
         </div>
       </template>
       
     </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Eliminar Libro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ¿Estas seguro que quieres eliminar este libro?
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnCancel" class="btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" id="btnDelete" class="btn-primary btnEliminarLibro" data-bs-dismiss="modal">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--Menu Lateral-->
 
@@ -327,6 +311,7 @@
       function cerrarModal() {
           document.querySelector('#addButton').setAttribute('data-bs-dismiss', 'modal')
         }
+
     </script>
 
 </body>
