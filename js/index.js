@@ -126,7 +126,7 @@ btnUpdate.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
     await updateBook(librosUpdate)
     librosUpdate = {}
-    window.location.reload()
+    //window.location.reload()
 })
 
 
@@ -170,7 +170,6 @@ async function updateBook() {
     }
     await updateLibro(sendData)
 }
-
 
 
 
