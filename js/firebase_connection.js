@@ -5,6 +5,7 @@ import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, updateDoc } 
 
 // Firebase configuration
 const firebaseConfig = {
+
   apiKey: "AIzaSyAkvANTM80FD-Ls1jnSELUfXnlTfT-1RLk",
   authDomain: "libraryghandi.firebaseapp.com",
   projectId: "libraryghandi",
@@ -12,7 +13,6 @@ const firebaseConfig = {
   messagingSenderId: "904884929770",
   appId: "1:904884929770:web:c1db98723a3c44edff4393"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore()
@@ -55,19 +55,30 @@ const deleteLibro = async (lib) => {
         console.log("Libro deleted: ", lib.libro_titulo);
     } catch (error) {
         console.error("Error! Couldn't delete the book: ", error);
-        alert('Algo salio mal')
     }
   }
 
-  // UPDATE
-  const updateLibro = async (sendData) => {
+  // UPDATE hacerlo manualmente en el conexion
+  const updateLibro = async (lib) => {
     try {
-        const libroRef = doc(libros, sendData.id);
-        await updateDoc(libroRef, sendData);
-        console.log("Libro updated successfully:", sendData.libro_titulo);
+      console.log('@@@',lib.id)
+      const libroRef = doc(libros, lib.id);
+      await updateDoc(libroRef, {
+        lib_disponibilidad: lib.lib_disponibilidad,
+        pres_correo: lib.pres_correo,
+        pres_domicilio: lib.pres_domicilio,
+        pres_fecha_fin: lib.pres_fecha_fin,
+        pres_fecha_inicio: lib.pres_fecha_inicio,
+        pres_nombre: lib.pres_nombre,
+        pres_telefono: lib.pres_telefono,
+        pres_img: lib.pres_img
+      });
+      console.log("Libro actualizado correctamente:", lib.libro_titulo);
     } catch (error) {
-        console.error("Error! Couldn't update the book:", error);
+      console.error("¡Error! No se pudo actualizar el libro:", error);
     }
   }
+  
+  
 
 export { getLibros, saveLibro, deleteLibro, updateLibro }

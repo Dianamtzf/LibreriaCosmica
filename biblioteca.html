@@ -29,7 +29,7 @@
             </label>
         </div>
         
-        <div style="position: absolute; left: 33rem;">
+        <div style="position: absolute; left: 28rem;">
           <a href="#" onclick="location.reload();">
             <img src="images/new_logo.png" alt="" style="width: 16rem; height: 9rem;">
           </a>
@@ -40,13 +40,27 @@
                 <i class="fa fa-search"></i>
             </div>
         </div>
+        <div style="display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    margin-right: 30px;">
+          <button class="btnAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+              <div class="icono-boton-agregar">
+                  <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
+              </div>
+              <span>Agregar Libro</span>
+          </button>
 
-        <button class="btnAgregar" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <div class="icono-boton-agregar">
-              <i class="fa-solid fa-circle-plus" style="font-size: 3rem; margin-right: 1rem;"></i>
-          </div>
-          <span>Agregar Libro</span>
-        </button>
+          <button type="button" value="" class="presLibros" id="presLibros" style="background-color: #42424200;;  border: none;">
+            <a class="fa-solid fa-book fa-beat" 
+            style="font-size: 23px;
+                  text-decoration: none;
+                  color: #722b85;
+                  cursor: pointer;"
+            ></a>
+          </button>
+        </div>
+        
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -164,7 +178,7 @@
     </header>
 
     <main class="main">
-        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem; margin-top: 10rem;">
+        <section class="carrusel" style="display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; height: 42rem; margin-top: 1rem;">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 60vh; width: 85%;" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -197,52 +211,187 @@
     </main>
     
     <section class="tarjetas">
-      <div class="contenedor" id="contenedor"></div>
-      <div class="contenido" id="contenido"></div>
-    
-      <template id="cardBook">
-        <div class="card">
-          <img src="" alt="" class="card-img-top imgStyle">
-          <div class="card-body cardStyle" style="position: relative;">
-            <div class="titulo"></div>
-            <ul class="card-text">
-              <li><strong>Autor:</strong> <span class="author"></span></li>
-              <li><strong>Categoría:</strong> <span class="category"></span></li>
-              <li><strong>Año:</strong> <span class="anio"></span></li>
-              
-            </ul>
+      <div class="contenedor" id="contenedor">
+        <div class="contenido" id="contenido">
+          
+          <template id="cardBook">
+            <div class="card">
+              <img src="" alt="" class="card-img-top imgStyle">
+              <div class="card-body cardStyle" style="position: relative;">
+                <div class="titulo"></div>
+                <ul class="card-text">
+                  <li><strong>Autor:</strong> <span class="author"></span></li>
+                  <li><strong>Categoría:</strong> <span class="category"></span></li>
+                  <li><strong>Año:</strong> <span class="anio"></span></li>
+                  
+                </ul>
 
-            <div style="display: flex; 
-                        align-items: center; 
-                        justify-content: space-between; 
-                        margin-left: 20px; 
-                        margin-right: 20px; 
-                        margin-bottom: 10px; 
-                        margin-top: 10px;
-                        position: absolute;
-                        left: 30px;
-                        right: 30px;
-                        bottom: 5px;"
-                      >
-              <a href="" class="Apartar btn-danger">
-                Apartar
-              </a>
-              <button type="button" value="" class="eliminarLibro" id="btnModal-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #fff; border: none;">
-                <a class="fa-solid fa-trash" 
-                style="font-size: 23px;
-                      text-decoration: none;
-                      color: red;
-                      cursor: pointer;"
-                ></a>
-              </button>
-              
-            </div>
+                <div style="display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  margin-left: 20px;
+                  margin-bottom: 10px;
+                  position: absolute;
+                  left: 30px;
+                  right: 30px;
+                  bottom: 5px;"
             
-          </div>
+                          >
+                          <button type="button" value="" class="Apartar" id="btnModal-update" data-bs-toggle="modal" data-bs-target="#apartar">
+                            Apartar
+                          </button>
+                  <button type="button" value="" class="eliminarLibro" id="btnModal-delete" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="background-color: #fff; border: none;">
+                    <a class="fa-solid fa-trash" 
+                    style="font-size: 23px;
+                          text-decoration: none;
+                          color: red;
+                          cursor: pointer;"
+                    ></a>
+                  </button>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </template>
+
+          <template id="cardBookPres">
+            <div class="card">
+              <img src="" alt="" class="card-img-top imgStyle">
+              <div class="card-body cardStyle" style="position: relative;">
+                <div class="titulo"></div>
+                <ul class="card-text">
+                  <li><strong>Autor:</strong> <span class="author"></span></li>
+                  <li><strong>Categoría:</strong> <span class="category"></span></li>
+                  <li><strong>Año:</strong> <span class="anio"></span></li>
+                  
+                </ul>
+
+                <div style="display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  margin-left: 20px;
+                  margin-bottom: 10px;
+                  position: absolute;
+                  left: 30px;
+                  right: 30px;
+                  bottom: 5px;"
+            
+                          >
+                          <button type="button" value="" data-bs-target="#apartar" disabled style="width: 20rem; font-size: medium; border-radius: 10px;">
+                            No disponible
+                          </button>
+                  <button type="button" value="" data-bs-target="#staticBackdrop" disabled style="background-color: #fff; border: none;">
+                    <a class="fa-solid fa-trash" 
+                    style="font-size: 23px;
+                          text-decoration: none;
+                          color: rgb(73, 70, 70);
+                          cursor: none;"
+                    ></a>
+                  </button>
+                  
+                </div>
+                
+              </div>
+            </div>
+          </template>
         </div>
-      </template>
-      
+      </div>
     </section>
+
+<!-- Modal -->
+<div class="modal fade" id="apartar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Apartar Libro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form name="formApartar" class="formApartar">
+          <fieldset>
+              <label for="name" class="etiqueta-label">Nombre del Solicitante:</label>
+              <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="input-formulario"
+                  placeholder="Nombre"
+                  style="width: 100%"
+                  required
+              >
+              <label for="imagen" class="etiqueta-label">Foto de identificación:</label>
+              <input
+                  type="text"
+                  name="imagen"
+                  id="imagen"
+                  class="input-formulario"
+                  placeholder="Link de imagen"
+                  style="width: 100%"
+                  required
+              >
+              <label for="correo" class="etiqueta-label">Correo Electrónico:</label>
+              <input
+                  type="email"
+                  name="correo"
+                  id="correo"
+                  class="input-formulario"
+                  placeholder="Ingrese su Correo"
+                  style="width: 100%"
+                  required
+              >
+              <label for="telefono" class="etiqueta-label">Número de celular:</label>
+              <input
+                  type="number"
+                  name="telefono"
+                  id="telefono"
+                  class="input-formulario"
+                  placeholder="Ingrese su número de celular"
+                  style="width: 100%"
+                  required
+              >
+              <label for="domicilio" class="etiqueta-label">Domicilio:</label>
+              <input
+                  type="text"
+                  name="domicilio"
+                  id="domicilio"
+                  class="input-formulario"
+                  placeholder="Ingrese su dirección"
+                  style="width: 100%"
+                  required
+              >
+              <label for="fechaInicio" class="etiqueta-label">Fecha de Inicio:</label>
+              <input
+                  type="date"
+                  name="fechaInicio"
+                  id="fechaInicio"
+                  class="input-formulario"
+                  placeholder="Ingrese la Fecha de Inicio"
+                  style="width: 100%"
+                  required
+              >
+              <label for="fechaFin" class="etiqueta-label">Fecha Fin:</label>
+              <input
+                  type="date"
+                  name="fechaFin"
+                  id="fechaFin"
+                  class="input-formulario"
+                  placeholder="Ingrese la fecha final"
+                  style="width: 100%"
+                  required
+              >
+          </fieldset>
+      </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="" data-bs-dismiss="modal">Cerrar</button>
+      <button type="submit" value="" class="btnUpdate" id="btnUpdate">Agregar</button>
+  </div>
+</div>
+</div>
+</div>
+
+    
 
 
     <!-- Modal -->

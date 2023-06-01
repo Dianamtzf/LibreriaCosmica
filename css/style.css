@@ -227,7 +227,7 @@ html {
 /*Buscador*/
 .buscador {
     position: absolute;
-    left: 68%;
+    left: 55%;
     top: 7%;
     transform: translate(-50%, -50%);
     padding: 10px;
@@ -324,7 +324,7 @@ html {
     padding: 0.8rem;
     border-radius: 1rem;
     background-color: #fff;
-    margin-right: 5rem;
+    margin-right: 4.5rem;
     width: 17rem;
     height: 4rem;
 }
@@ -546,7 +546,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 0px;
   }
   
   .card {
@@ -607,6 +607,8 @@ html {
     text-decoration: none;
     background-color: purple;
     font-size: medium;
+    margin-right: 30px;
+    width: 262px;
   }
 
   .Apartar:hover{
