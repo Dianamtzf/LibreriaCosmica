@@ -5,6 +5,7 @@ import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, updateDoc } 
 
 // Firebase configuration
 const firebaseConfig = {
+
   apiKey: "AIzaSyAkvANTM80FD-Ls1jnSELUfXnlTfT-1RLk",
   authDomain: "libraryghandi.firebaseapp.com",
   projectId: "libraryghandi",
@@ -12,7 +13,6 @@ const firebaseConfig = {
   messagingSenderId: "904884929770",
   appId: "1:904884929770:web:c1db98723a3c44edff4393"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore()
@@ -50,6 +50,7 @@ const saveLibro = async (sendData) => {
 // DELETE
 const deleteLibro = async (lib) => {
     try {
+        //console.log(lib.id)
         await deleteDoc(doc(libros, lib.id));
         console.log("Libro deleted: ", lib.libro_titulo);
     } catch (error) {
@@ -69,7 +70,8 @@ const deleteLibro = async (lib) => {
         pres_fecha_fin: lib.pres_fecha_fin,
         pres_fecha_inicio: lib.pres_fecha_inicio,
         pres_nombre: lib.pres_nombre,
-        pres_telefono: lib.pres_telefono
+        pres_telefono: lib.pres_telefono,
+        pres_img: lib.pres_img
       });
       console.log("Libro actualizado correctamente:", lib.libro_titulo);
     } catch (error) {

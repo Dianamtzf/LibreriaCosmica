@@ -7,12 +7,14 @@ const Buscar = document.getElementById('inBuscador')
 const btnBorrar = document.querySelector('#btnDelete')
 const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
 const btnUpdate = document.querySelector('#btnUpdate')
+const resultsContainer = document.querySelector('.results')
 
 
 
 //---------------Carga de tarjetas---------------------
 
 const cardBook = document.querySelector('#cardBook').content
+const cardBookPres = document.querySelector('#cardBookPres').content
 const contenido = document.querySelector('#contenido')
 const fragment = document.createDocumentFragment()
 
@@ -24,9 +26,9 @@ let librosUpdate = {}
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
     console.log('libros:', libros)
-    
     main()
 })
+
 
 // --------------- Scroll up button ---------------
 
@@ -52,10 +54,36 @@ window.onscroll = function() {
     }
 } 
 
-//Tarjetas
+/*const tableBook = document.querySelector('#tableBook').content
+//const contenido = document.querySelector('#contenido')
+//const fragment = document.createDocumentFragment()
+
+
+const creaTabla = (books) => {
+    contenido.innerHTML = '';
+    const tableRow = tableBook.querySelector('tr');
+  
+    books.forEach((item) => {
+      const clone = document.importNode(tableRow, true);
+      clone.querySelector('.tituloLib').textContent = item.lib_titulo;
+      clone.querySelector('.presNombre').textContent = item.pres_nombre;
+      clone.querySelector('.direccion').textContent = item.pres_direccion;
+      clone.querySelector('.correo').textContent = item.pres_correo;
+      clone.querySelector('.telefono').textContent = item.pres_telefono;
+      clone.querySelector('.fechaPres').textContent = item.pres_fecha_inicio;
+      clone.querySelector('.fechaDev').textContent = item.pres_fecha_fin;
+  
+      fragment.appendChild(clone);
+    });
+    contenido.appendChild(fragment);
+};*/
+
+//Tarjetas para Books disponibles
 const creaCards = (books) => {
     contenido.innerHTML = '';
-    books.forEach((item) => {
+    let librosDispon = []
+    librosDispon = books.filter((libro) => libro.lib_disponibilidad == true)
+    librosDispon.forEach((item) => {
         console.log(item)
         cardBook.querySelector('img').setAttribute('src', item.lib_img)
         cardBook.querySelector('.titulo').textContent = item.lib_titulo
@@ -77,6 +105,23 @@ const creaCards = (books) => {
     contenido.appendChild(fragment)
 }
 
+//Tarjetas para Books prestados
+const creaCardsPres = (books) => {
+    contenido.innerHTML = '';
+    books.forEach((item) => {
+        console.log(item)
+        cardBookPres.querySelector('img').setAttribute('src', item.lib_img)
+        cardBookPres.querySelector('.titulo').textContent = item.lib_titulo
+        cardBookPres.querySelector('.category').textContent = item.lib_categoria
+        cardBookPres.querySelector('.anio').textContent = item.lib_anio
+        cardBookPres.querySelector('.author').textContent = item.lib_autor
+
+        const clone = cardBookPres.cloneNode(true)
+        fragment.appendChild(clone)
+    })
+    contenido.appendChild(fragment)
+}
+
 
 function main() {
 
@@ -88,13 +133,6 @@ function main() {
         }, 1000)
     })
 
-
-    
-    /*btnAgregar.addEventListener('click', e => {
-        e.preventDefault(); // Evita que se refresque la página
-        insertBook()
-    })*/
-
     //Función para buscar por nombre de libro o de autor
     Buscar.addEventListener('keyup', () => {
         console.log('Si llega aquí');
@@ -103,8 +141,10 @@ function main() {
             (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
             book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
         );
-
+        resultsContainer.innerHTML=''
         creaCards(temp);
+        
+
     });
 
 
@@ -141,8 +181,9 @@ async function insertBook() {
         lib_img: form.portada.value,
         lib_titulo: form.titulo.value,
         lib_disponibilidad: true,
+        lib_descrip: null,
         // 
-        
+        pres_img: null,
         pres_correo: null,
         pres_domicilio: null,
         pres_fecha_fin: null,
@@ -161,6 +202,7 @@ async function updateBook() {
         id: librosUpdate.id,
         lib_disponibilidad: false,
         // 
+        pres_img: formApa.imagen.value,
         pres_correo: formApa.correo.value,
         pres_domicilio: formApa.domicilio.value,
         pres_fecha_fin: formApa.fechaFin.value,
@@ -171,25 +213,48 @@ async function updateBook() {
     await updateLibro(sendData)
 }
 
-
-
-
-
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     categoria.addEventListener('click', (e) => {
       e.preventDefault();
-      categoriaSeleccionada = categoria.textContent;
-      if(categoriaSeleccionada == 'Prestados'){
-          let librosPrestados = []
-          librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-          creaCards(librosPrestados);
+      categoriaSeleccionada = categoria.textContent
+  
+      // Vaciar la sección de resultados
+      resultsContainer.innerHTML=''
+  
+      // Agregar el título de la categoría
+      const tituloCategoria = document.createElement('h1')
+      tituloCategoria.textContent = categoriaSeleccionada;
+  
+      tituloCategoria.classList.add('category-title')
+      tituloCategoria.classList.add('fade-in')
+
+      resultsContainer.appendChild(tituloCategoria)
+
+      const navDivider = document.createElement('nav');
+      navDivider.classList.add('nav-divider');
+      navDivider.classList.add('centrado');
+      resultsContainer.appendChild(navDivider);
+  
+      if (categoriaSeleccionada === 'Prestados') {
+        let librosPrestados = []
+        librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false)
+        creaCardsPres(librosPrestados)
       } else {
-          let librosFiltrados = []
-          librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
-          creaCards(librosFiltrados);
+        let librosFiltrados = []
+        librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada)
+        creaCards(librosFiltrados)
       }
-      const menuCheckbox = document.getElementById('btn-menu');
+  
+      const menuCheckbox = document.getElementById('btn-menu')
       menuCheckbox.checked = false; // Cierra el menú al hacer clic en una categoría
-    });
-  });
+    })
+  })
+  
+  
+  
+  
+  
+
+
+
