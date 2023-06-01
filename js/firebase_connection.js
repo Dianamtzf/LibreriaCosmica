@@ -50,10 +50,12 @@ const saveLibro = async (sendData) => {
 // DELETE
 const deleteLibro = async (lib) => {
     try {
+        //console.log(lib.id)
         await deleteDoc(doc(libros, lib.id));
         console.log("Libro deleted: ", lib.libro_titulo);
     } catch (error) {
         console.error("Error! Couldn't delete the book: ", error);
+        alert('Algo salio mal')
     }
   }
 
