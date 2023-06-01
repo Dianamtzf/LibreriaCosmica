@@ -17,7 +17,6 @@ html {
     justify-content: space-between;
     align-items: center;
     z-index: 10;
-    position: fixed;
 }
 
 .header .btn-menu {
@@ -229,7 +228,7 @@ html {
 .buscador {
     position: absolute;
     left: 68%;
-    top: 48%; 
+    top: 5%; 
     transform: translate(-50%, -50%);
     padding: 10px;
 }
@@ -620,11 +619,16 @@ html {
     transition: all 0.3s ease-in-out;
   }
   
-  /*
-  .card:hover{
-    transform: scale(1.05);
+
+  .cancelarModalEliminar:hover{
+    transform: scale(1.1);
     transition: all 0.3s ease-in-out;
-  }*/
+  }
+
+  .btnEliminarLibro:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
 
 
   .Eliminar {
