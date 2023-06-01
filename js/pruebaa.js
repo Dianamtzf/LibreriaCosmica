@@ -1,12 +1,10 @@
 import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
 
-const form = document.querySelector(".formulario") // Selects the form
-const formApa = document.querySelector(".formApartar")
+const form = document.querySelector(".formApartar") // Selects the form
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
 const btnBorrar = document.querySelector('#btnDelete')
 const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
-const btnUpdate = document.querySelector('#btnUpdate')
 
 
 
@@ -19,7 +17,6 @@ const fragment = document.createDocumentFragment()
 let libros = []
 let categoriaSeleccionada = '';
 let librosDelete = {}
-let librosUpdate = {}
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
@@ -68,10 +65,6 @@ const creaCards = (books) => {
             librosDelete = item
             console.log('Libro para borrar =>', librosDelete)
         })
-        clone.querySelector('#btnModal-update').addEventListener('click', () => {
-            librosUpdate = item
-            console.log('Libro para actualizar =>', librosUpdate.id)
-        })
         fragment.appendChild(clone)
     })
     contenido.appendChild(fragment)
@@ -88,12 +81,7 @@ function main() {
         }, 1000)
     })
 
-
     
-    /*btnAgregar.addEventListener('click', e => {
-        e.preventDefault(); // Evita que se refresque la página
-        insertBook()
-    })*/
 
     //Función para buscar por nombre de libro o de autor
     Buscar.addEventListener('keyup', () => {
@@ -122,13 +110,6 @@ btnCancelar.addEventListener('click', () => {
     librosDelete = {}
 })
 
-btnUpdate.addEventListener('click', async() => {
-    console.log('Entra al EventListener de btnBorrar')
-    await updateBook(librosUpdate)
-    librosUpdate = {}
-    window.location.reload()
-})
-
 
 
 // Funcion para añadir un libro
@@ -152,23 +133,6 @@ async function insertBook() {
     }
     await saveLibro(sendData)
     form.reset()
-}
-
-// Funcion para actualizar un libro
-async function updateBook() {
-    // Data to be added to the database
-    const sendData = {
-        id: librosUpdate.id,
-        lib_disponibilidad: false,
-        // 
-        pres_correo: formApa.correo.value,
-        pres_domicilio: formApa.domicilio.value,
-        pres_fecha_fin: formApa.fechaFin.value,
-        pres_fecha_inicio: formApa.fechaInicio.value,
-        pres_nombre: formApa.name.value,
-        pres_telefono: formApa.telefono.value
-    }
-    await updateLibro(sendData)
 }
 
 
