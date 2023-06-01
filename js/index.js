@@ -73,7 +73,7 @@ const creaCards = (books) => {
 
 function main() {
 
-    creaCards(libros)
+    //creaCards(libros)
     btnAgregar.addEventListener('click', async () => {
         await insertBook()
         setTimeout(function () {
