@@ -1,33 +1,29 @@
 import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
 
-const form = document.querySelector(".formulario") // Selects the form
-const formApa = document.querySelector(".formApartar")
+const form = document.querySelector(".formApartar") // Selects the form
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
 const btnBorrar = document.querySelector('#btnDelete')
 const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
-const btnUpdate = document.querySelector('#btnUpdate')
 
 
 
 //---------------Carga de tarjetas---------------------
 
 const cardBook = document.querySelector('#cardBook').content
-const cardBookPres = document.querySelector('#cardBookPres').content
 const contenido = document.querySelector('#contenido')
 const fragment = document.createDocumentFragment()
 
 let libros = []
 let categoriaSeleccionada = '';
 let librosDelete = {}
-let librosUpdate = {}
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
     console.log('libros:', libros)
+    
     main()
 })
-
 
 // --------------- Scroll up button ---------------
 
@@ -53,36 +49,10 @@ window.onscroll = function() {
     }
 } 
 
-/*const tableBook = document.querySelector('#tableBook').content
-//const contenido = document.querySelector('#contenido')
-//const fragment = document.createDocumentFragment()
-
-
-const creaTabla = (books) => {
-    contenido.innerHTML = '';
-    const tableRow = tableBook.querySelector('tr');
-  
-    books.forEach((item) => {
-      const clone = document.importNode(tableRow, true);
-      clone.querySelector('.tituloLib').textContent = item.lib_titulo;
-      clone.querySelector('.presNombre').textContent = item.pres_nombre;
-      clone.querySelector('.direccion').textContent = item.pres_direccion;
-      clone.querySelector('.correo').textContent = item.pres_correo;
-      clone.querySelector('.telefono').textContent = item.pres_telefono;
-      clone.querySelector('.fechaPres').textContent = item.pres_fecha_inicio;
-      clone.querySelector('.fechaDev').textContent = item.pres_fecha_fin;
-  
-      fragment.appendChild(clone);
-    });
-    contenido.appendChild(fragment);
-};*/
-
-//Tarjetas para Books disponibles
+//Tarjetas
 const creaCards = (books) => {
     contenido.innerHTML = '';
-    let librosDispon = []
-    librosDispon = books.filter((libro) => libro.lib_disponibilidad == true)
-    librosDispon.forEach((item) => {
+    books.forEach((item) => {
         console.log(item)
         cardBook.querySelector('img').setAttribute('src', item.lib_img)
         cardBook.querySelector('.titulo').textContent = item.lib_titulo
@@ -95,27 +65,6 @@ const creaCards = (books) => {
             librosDelete = item
             console.log('Libro para borrar =>', librosDelete)
         })
-        clone.querySelector('#btnModal-update').addEventListener('click', () => {
-            librosUpdate = item
-            console.log('Libro para actualizar =>', librosUpdate.id)
-        })
-        fragment.appendChild(clone)
-    })
-    contenido.appendChild(fragment)
-}
-
-//Tarjetas para Books prestados
-const creaCardsPres = (books) => {
-    contenido.innerHTML = '';
-    books.forEach((item) => {
-        console.log(item)
-        cardBookPres.querySelector('img').setAttribute('src', item.lib_img)
-        cardBookPres.querySelector('.titulo').textContent = item.lib_titulo
-        cardBookPres.querySelector('.category').textContent = item.lib_categoria
-        cardBookPres.querySelector('.anio').textContent = item.lib_anio
-        cardBookPres.querySelector('.author').textContent = item.lib_autor
-
-        const clone = cardBookPres.cloneNode(true)
         fragment.appendChild(clone)
     })
     contenido.appendChild(fragment)
@@ -124,13 +73,15 @@ const creaCardsPres = (books) => {
 
 function main() {
 
-    //creaCards(libros)
+    creaCards(libros)
     btnAgregar.addEventListener('click', async () => {
         await insertBook()
         setTimeout(function () {
             window.location.reload()
         }, 1000)
     })
+
+    
 
     //Función para buscar por nombre de libro o de autor
     Buscar.addEventListener('keyup', () => {
@@ -159,13 +110,6 @@ btnCancelar.addEventListener('click', () => {
     librosDelete = {}
 })
 
-btnUpdate.addEventListener('click', async() => {
-    console.log('Entra al EventListener de btnBorrar')
-    await updateBook(librosUpdate)
-    librosUpdate = {}
-    window.location.reload()
-})
-
 
 
 // Funcion para añadir un libro
@@ -178,9 +122,8 @@ async function insertBook() {
         lib_img: form.portada.value,
         lib_titulo: form.titulo.value,
         lib_disponibilidad: true,
-        lib_descrip: null,
         // 
-        pres_img: null,
+        
         pres_correo: null,
         pres_domicilio: null,
         pres_fecha_fin: null,
@@ -192,23 +135,10 @@ async function insertBook() {
     form.reset()
 }
 
-// Funcion para actualizar un libro
-async function updateBook() {
-    // Data to be added to the database
-    const sendData = {
-        id: librosUpdate.id,
-        lib_disponibilidad: false,
-        // 
-        pres_img: formApa.imagen.value,
-        pres_correo: formApa.correo.value,
-        pres_domicilio: formApa.domicilio.value,
-        pres_fecha_fin: formApa.fechaFin.value,
-        pres_fecha_inicio: formApa.fechaInicio.value,
-        pres_nombre: formApa.name.value,
-        pres_telefono: formApa.telefono.value
-    }
-    await updateLibro(sendData)
-}
+
+
+
+
 
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
@@ -218,7 +148,7 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
       if(categoriaSeleccionada == 'Prestados'){
           let librosPrestados = []
           librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-          creaCardsPres(librosPrestados);
+          creaCards(librosPrestados);
       } else {
           let librosFiltrados = []
           librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
@@ -228,6 +158,3 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
       menuCheckbox.checked = false; // Cierra el menú al hacer clic en una categoría
     });
   });
-
-
-

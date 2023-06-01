@@ -12,11 +12,12 @@ html {
     width: 100%;
     margin: auto;
     background-color: #ffed02;
-    height: 11vh;
+    height: 15vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    /*position: fixed;*/
 }
 
 .header .btn-menu {
@@ -224,11 +225,10 @@ html {
 
 
 /*Buscador*/
-
 .buscador {
     position: absolute;
-    left: 68%;
-    top: 5%; 
+    left: 55%;
+    top: 7%; 
     transform: translate(-50%, -50%);
     padding: 10px;
 }
@@ -324,7 +324,7 @@ html {
     padding: 0.8rem;
     border-radius: 1rem;
     background-color: #fff;
-    margin-right: 5rem;
+    margin-right: 4.5rem;
     width: 17rem;
     height: 4rem;
 }
@@ -503,9 +503,43 @@ html {
 
 .main {
     position: relative;
-    height: 60vh;
-    
+    height: 45vh;
 }
+
+.sugerencias {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: linear-gradient(to top, #722b85, #ffffff);
+}
+
+.btnDescubrelo{
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    position: absolute;
+    left: 30px;
+    top: 430px;
+}
+
+.btnDescubrelo:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
 
 
 /*Boton para ir arriba*/
@@ -546,7 +580,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 0px;
   }
   
   .card {
@@ -607,6 +641,8 @@ html {
     text-decoration: none;
     background-color: purple;
     font-size: medium;
+    margin-right: 30px;
+    width: 262px;
   }
 
   .Apartar:hover{
@@ -644,6 +680,9 @@ html {
     margin-bottom: 5px;
   }
 
+  .modalAdd-backdrop {
+    position: relative;
+  }
 
   
   
