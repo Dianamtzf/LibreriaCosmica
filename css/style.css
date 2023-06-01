@@ -228,7 +228,7 @@ html {
 .buscador {
     position: absolute;
     left: 55%;
-    top: 7%;
+    top: 7%; 
     transform: translate(-50%, -50%);
     padding: 10px;
 }
@@ -503,9 +503,43 @@ html {
 
 .main {
     position: relative;
-    height: 60vh;
-    
+    height: 45vh;
 }
+
+.sugerencias {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: linear-gradient(to top, #722b85, #ffffff);
+}
+
+.btnDescubrelo{
+    width: 150px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    position: absolute;
+    left: 30px;
+    top: 430px;
+}
+
+.btnDescubrelo:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
 
 
 /*Boton para ir arriba*/
@@ -643,11 +677,16 @@ html {
     transition: all 0.3s ease-in-out;
   }
   
-  /*
-  .card:hover{
-    transform: scale(1.05);
+
+  .cancelarModalEliminar:hover{
+    transform: scale(1.1);
     transition: all 0.3s ease-in-out;
-  }*/
+  }
+
+  .btnEliminarLibro:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
 
 
   .Eliminar {
