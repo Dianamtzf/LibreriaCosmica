@@ -57,12 +57,21 @@ const deleteLibro = async (lib) => {
     }
   }
 
-  // UPDATE
-  const updateLibro = async (sendData) => {
+  // UPDATE hacerlo manualmente en el conexion
+  const updateLibro = async (lib) => {
     try {
-      const libroRef = doc(libros, sendData.libro_id);
-      await updateDoc(libroRef, sendData);
-      console.log("Libro actualizado correctamente:", sendData.libro_titulo);
+      console.log('@@@',lib.id)
+      const libroRef = doc(libros, lib.id);
+      await updateDoc(libroRef, {
+        lib_disponibilidad: lib.lib_disponibilidad,
+        pres_correo: lib.pres_correo,
+        pres_domicilio: lib.pres_domicilio,
+        pres_fecha_fin: lib.pres_fecha_fin,
+        pres_fecha_inicio: lib.pres_fecha_inicio,
+        pres_nombre: lib.pres_nombre,
+        pres_telefono: lib.pres_telefono
+      });
+      console.log("Libro actualizado correctamente:", lib.libro_titulo);
     } catch (error) {
       console.error("¡Error! No se pudo actualizar el libro:", error);
     }
