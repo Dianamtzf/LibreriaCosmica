@@ -561,7 +561,8 @@ html {
   }
   
   .imgStyle {
-    width: 150px;
+    width: 225px;
+    padding: 18px;
     object-fit: cover;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -575,6 +576,12 @@ html {
   }
   
   .titulo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .nombre {
     font-weight: bold;
     font-size: 18px;
     margin-bottom: 10px;
@@ -612,6 +619,21 @@ html {
   }
 
   .Apartar:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .Devolver{
+    color: white;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: purple;
+    font-size: medium;
+    width: 95%;
+  }
+  .Devolver:hover{
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
   }

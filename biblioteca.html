@@ -244,7 +244,7 @@
                     <a class="fa-solid fa-trash" 
                     style="font-size: 23px;
                           text-decoration: none;
-                          color: red;
+                          color: rgb(207, 18, 18);
                           cursor: pointer;"
                     ></a>
                   </button>
@@ -297,6 +297,38 @@
           </template>
         </div>
       </div>
+      <template id="cardUsers">
+        <div class="card" style="width: 550px;">
+          <img src="" alt="" class="card-img-top imgStyle">
+          <div class="card-body cardStyle" style="position: relative;">
+            <div class="nombre"></div>
+            <ul class="card-text">
+              <li><strong>Correo:</strong> <span class="correo"></span></li>
+              <li><strong>Teléfono:</strong> <span class="tel"></span></li>
+              <li><strong>Domicilio:</strong> <span class="domicilio"></span></li>
+              <li><strong>Fecha del préstamo:</strong> <span class="fechaInicio"></span></li>
+              <li><strong>Fecha límite:</strong> <span class="fechaFin"></span></li>
+              <li><strong>Libro prestado:</strong> <span class="tituloLib"></span></li>
+            </ul>
+
+            <div style="display: flex;
+              align-items: center;
+              /*justify-content: flex-end;*/
+              /*margin-left: 20px;*/
+              margin-bottom: 10px;
+              /*position: absolute;*/
+              left: 30px;
+              right: 30px;
+              bottom: 5px;"
+        
+            >
+              <button type="button" class="Devolver" id="btnModal-devolver" data-bs-toggle="modal" data-bs-target="#devolver">
+                Devolver Libro
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
     </section>
 
 <!-- Modal -->
@@ -408,6 +440,28 @@
           <div class="modal-footer">
             <button type="button" id="btnCancel" class="btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             <button type="button" id="btnDelete" class="btn-primary btnEliminarLibro" data-bs-dismiss="modal">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Devolver Libro -->
+    <div class="modal fade" id="devolver" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header" style="border-bottom: 1px solid #dee2e600;">
+            <h5 class="modal-title" id="staticBackdropLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="font-size: 1.5rem; text-align: center;">
+            <i class="fas fa-exclamation-triangle text-warning" style="font-size: 10rem;"></i> <!-- Utilizamos el icono de advertencia de Font Awesome -->
+            <br>
+            <h5 class="modal-title" id="staticBackdropLabel" style="font-size: 3rem; margin-block-end: 20px;">Devolver Libro</h5>
+            ¿Confirma que el libro fue devuelto de manera correcta?
+          </div>
+          <div class="modal-footer" style="justify-content: center; font-size: large; border-top: 0px; padding: 15px;">
+            <button type="button" id="btnCancel" class="btn-secondary" style="border-radius: 5px;" data-bs-dismiss="modal">No</button>
+            <button type="button" id="btnDevolver" class="btn-primary btnDevolverLibro" style="border-radius: 5px;" data-bs-dismiss="modal">Confirmar</button>
           </div>
         </div>
       </div>
