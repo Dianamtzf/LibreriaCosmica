@@ -20,6 +20,10 @@ html {
     /*position: fixed;*/
 }
 
+@media (min-width: 768px) {
+    
+}
+
 .header .btn-menu {
     float: left;
     line-height: 70px;
@@ -644,12 +648,14 @@ html {
     color: white;
     background-color: #007bff;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 11px;
     text-decoration: none;
     background-color: purple;
     font-size: medium;
     margin-right: 30px;
     width: 262px;
+    border: none;
+    outline: none;
   }
 
   .Apartar:hover{
