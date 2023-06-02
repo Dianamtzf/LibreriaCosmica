@@ -1,6 +1,6 @@
 import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
 
-const form = document.querySelector(".formulario") // Selects the form
+const form = document.querySelector(".form") // Selects the form
 const formApa = document.querySelector(".formApartar")
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
@@ -9,7 +9,14 @@ const btnCancelar = document.querySelector('#btnCancel') // Selects the button t
 const btnUpdate = document.querySelector('#btnUpdate')
 const btnDevolver = document.querySelector('#btnDevolver')
 const btnUsuarios = document.querySelector('#presLibros')
+const addButton =  document.getElementById('btnAdd')
+const resultsContainer = document.querySelector('.results')
+const btnUp = document.getElementById('btnUpdate');
 
+const imgStephen = document.getElementById('imgStephen') 
+const imgClaire = document.getElementById('imgClaire') 
+const imgJohn = document.getElementById('imgJohn') 
+const imgNail = document.getElementById('imgNail') 
 
 //---------------Carga de tarjetas---------------------
 
@@ -17,7 +24,6 @@ const cardBook = document.querySelector('#cardBook').content
 const cardBookPres = document.querySelector('#cardBookPres').content
 const cardUsers = document.querySelector('#cardUsers').content
 const contenido = document.querySelector('#contenido')
-const contenedor = document.querySelector('#contenedor')
 const fragment = document.createDocumentFragment()
 
 let libros = []
@@ -41,7 +47,7 @@ function scrollUp() {
     var currentScroll = document.documentElement.scrollTop || document.body.scrollTop
     if(currentScroll > 0) {
         window.requestAnimationFrame(scrollUp)
-        window.scrollTo(0, currentScroll - (currentScroll / 5))
+        window.scrollTo(0, 0)
         buttonUp.style.transform = "scale(0)"
     }
 }
@@ -144,18 +150,32 @@ function main() {
             (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
             book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
         );
-
+        resultsContainer.innerHTML=''
         creaCards(temp);
-    });
+        
 
+    });
+     
+    //
 
 }
 // ---------------- Funciones ------------------
-btnUsuarios.addEventListener('click', async() => {
-    let librosPrestados = []
+btnUsuarios.addEventListener('click', async () => {
+    let librosPrestados = [];
     librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+    resultsContainer.innerHTML = '';
     creaUsers(librosPrestados);
-})
+  
+    const tituloCategoria = document.createElement('h1');
+    tituloCategoria.textContent = "Sistema de Usuarios";
+    tituloCategoria.classList.add('category-title');
+    resultsContainer.appendChild(tituloCategoria);
+    const navDivider = document.createElement('nav');
+    navDivider.classList.add('nav-divider');
+    navDivider.classList.add('centrado');
+    resultsContainer.appendChild(navDivider);
+  });
+  
 
 btnBorrar.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
@@ -172,14 +192,16 @@ btnUpdate.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
     await updateBook(librosUpdate)
     librosUpdate = {}
-    window.location.reload()
+    //window.location.reload()
 })
 
 btnDevolver.addEventListener('click', async() => {
+    resultsContainer.innerHTML=''
     console.log('Entra al EventListener de btnDevolver')
     await returnBook(librosDev)
     librosDev = {}
     window.location.reload()
+    
 })
 
 
@@ -243,26 +265,108 @@ async function returnBook() {
     await updateLibro(sendData)
 }
 
-
-
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     categoria.addEventListener('click', (e) => {
       e.preventDefault();
-      categoriaSeleccionada = categoria.textContent;
-      if(categoriaSeleccionada == 'Prestados'){
-          let librosPrestados = []
-          librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-          creaCardsPres(librosPrestados);
+      categoriaSeleccionada = categoria.textContent
+  
+      // Vaciar la sección de resultados
+      resultsContainer.innerHTML=''
+  
+      // Agregar el título de la categoría
+      const tituloCategoria = document.createElement('h1')
+      tituloCategoria.textContent = categoriaSeleccionada;
+  
+      tituloCategoria.classList.add('category-title')
+      tituloCategoria.classList.add('fade-in')
+
+      resultsContainer.appendChild(tituloCategoria)
+
+      const navDivider = document.createElement('nav');
+      navDivider.classList.add('nav-divider');
+      navDivider.classList.add('centrado');
+      resultsContainer.appendChild(navDivider);
+  
+      if (categoriaSeleccionada === 'Prestados') {
+        let librosPrestados = []
+        librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false)
+        creaCardsPres(librosPrestados)
       } else {
-          let librosFiltrados = []
-          librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
-          creaCards(librosFiltrados);
+        let librosFiltrados = []
+        librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada)
+        creaCards(librosFiltrados)
       }
-      const menuCheckbox = document.getElementById('btn-menu');
+  
+      const menuCheckbox = document.getElementById('btn-menu')
       menuCheckbox.checked = false; // Cierra el menú al hacer clic en una categoría
+    })
+  })
+  
+  
+  formApa.addEventListener('input', () => {
+    const inputs = formApa.querySelectorAll('input');
+    let isFormValid = true;
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        isFormValid = false;
+      }
     });
+    btnUp.disabled = !isFormValid;
   });
 
+  form.addEventListener('input', () => { 
 
+    const inputs = form.querySelectorAll('input'); 
+    
+    let isFormValid = true; 
+    
+     
+    
+    inputs.forEach((input) => {
+    
+     if (!input.value) {
+    
+     isFormValid = false;
+    
+     } 
+    
+    }); 
+    
+    if (isFormValid) {
+    
+     addButton.removeAttribute('disabled'); 
+    
+    } else {
+    
+     addButton.setAttribute('disabled', 'disabled');
+    
+     } 
+    });
+  
+  
+  
 
+  imgStephen.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Stephen King')
+    creaCards(temp)
+ });
+
+ imgClaire.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Claire Martin')
+    creaCards(temp)
+ });
+
+ imgJohn.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'John Green')
+    creaCards(temp)
+ });
+
+ imgNail.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Neil Gaiman')
+    creaCards(temp)
+ });

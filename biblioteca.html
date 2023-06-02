@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Librería Cósmica</title>
 </head>
 
@@ -66,13 +69,13 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 2.3rem;">
+            <div class="modal-content" style="border-radius: 10px;">
               <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
                 <h5 class="modal-title" id="exampleModalLabel" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Agregar Libro</h5>
                 
               </div>
               <div class="modal-body">
-                <form name="formulario" class="formulario">
+                <form name="formulario" class="form formulario">
                   <fieldset>
                       <!--TITULO-->
                       <div class="field">
@@ -145,9 +148,7 @@
 
                       </div>
                     
-                      <div class="modal-footer">
-                        <button type="button" class="btnCerrarModal" 
-                                data-bs-dismiss="modal">Cancelar</button>
+              
                       <div class="modal-footer modalAdd">
                         <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
                         <!--BOTON SUBMIT FORM-->
@@ -155,7 +156,7 @@
                         <input
                           type="submit"
                           class="btnAdd"
-                          id="addButton"
+                          id="btnAdd"
                           value="Agregar Libro"
                           data-bs-dismiss="modal"
                           style="width: 10rem;
@@ -167,6 +168,7 @@
                                 font-size: 1.2rem;
                                 color: #fff;
                                 font-weight: 700;"
+                          disabled
                         >
 
                         <!--<button type="submit" class="btnAdd" id="addButton" data-bs-dismiss="modal"></button>-->
@@ -183,13 +185,14 @@
 
     <main class="main">
         <section class="carrusel" 
-                  style="display: flex; 
-                          align-items: center; 
-                          justify-content: center; 
-                          /*position: absolute;*/
-                          width: 100%; 
-                          height: 42rem; 
-                          margin-top: 1rem;">
+                  style=" display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          /* position: absolute; */
+                          width: 100%;
+                          /* height: 42rem; */
+                          margin-top: 1rem;
+                          /* margin-left: 8rem;">
     
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 40vh; width: 85%;" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -222,6 +225,12 @@
             
         </section>
     </main>
+    <div class="results">
+      <h1 class="titleStyle" style="margin: 30px;">"Descubre el mundo de las letras con los autores más populares en nuestra biblioteca: donde el conocimiento se encuentra con la imaginación"</h1>
+      <h1 class="category-title" style="margin-top: 30px;"></h1>
+
+      <nav class="nav-divider centrado"></nav>
+    </div>
     
     <section class="tarjetas">
       <div class="contenedor" id="contenedor">
@@ -239,7 +248,7 @@
                         top: 360px;
                         left: 35px;">Sumérgete en el terror literario de<br>
                         Stephen King y despierta tus<br> pesadillas más cautivadoras.</p>
-              <button class="btnDescubrelo" style="top: 525px;">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgStephen" style="top: 525px;">Descúbrelos</button>
             </div>
   
             <div style="position: relative; margin: 25px;">
@@ -252,7 +261,7 @@
                         top: 360px;
                         left: 35px;">Descubre un mundo de emociones<br>
                         y reflexiones en los libros de<br> Claire Martin.</p>
-              <button class="btnDescubrelo" style="background-color: #ff275e; color: white; top: 525px;">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgClaire" style="background-color: #ff275e; color: white; top: 525px;">Descúbrelos</button>
             </div>
             
             <div style="position: relative; margin: 25px;">
@@ -265,7 +274,7 @@
                         top: 368px;
                         left: 213px;">Explora el poder de las palabras<br>
                         y el amor en los cautivadores<br> libros de John Green.</p>
-              <button class="btnDescubrelo">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgJohn">Descúbrelos</button>
             </div>
   
             <div style="position: relative; margin: 25px;">
@@ -277,8 +286,8 @@
                         position: absolute;
                         top: 370px;
                         right: 28px;">Adéntrate en los mundos mágicos<br>
-                        y fascinantes en los<br> libros de John Green.</p>
-              <button class="btnDescubrelo">Descúbrelos</button>
+                        y fascinantes en los<br> libros de Neil Gaiman.</p>
+              <button class="btnDescubrelo" id="imgNail">Descúbrelos</button>
             </div>
           </div>
           
@@ -403,98 +412,130 @@
     </section>
 
 <!-- Modal -->
+
 <div class="modal fade" id="apartar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Apartar Libro</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius: 10px;">
+      <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
+        <h5 class="modal-title" id="apartar" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Apartar Libro</h5>
+        
       </div>
       <div class="modal-body">
-        <form name="formApartar" class="formApartar">
+        <form name="formApartar" class="formApartar formulario">
           <fieldset>
-              <label for="name" class="etiqueta-label">Nombre del Solicitante:</label>
+            <div class="field">
               <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  class="input-formulario"
-                  placeholder="Nombre"
-                  style="width: 100%"
-                  required
-              >
-              <label for="imagen" class="etiqueta-label">Foto de identificación:</label>
+                type="text"
+                name="name"
+                id="name"
+                class="input"
+                placeholder="Nombre"
+                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                required
+            >
+            <label for="" class="label">Nombre del Solicitante:</label>
+            </div>
+            <div class="field">
               <input
-                  type="text"
-                  name="imagen"
-                  id="imagen"
-                  class="input-formulario"
-                  placeholder="Link de imagen"
-                  style="width: 100%"
-                  required
+                type="text"
+                name="imagen"
+                id="imagen"
+                class="input"
+                placeholder="Link de imagen"
+                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                required
               >
-              <label for="correo" class="etiqueta-label">Correo Electrónico:</label>
+              <label for="" class="label">Foto de identificación:</label>
+            </div>
+            <div class="field">
               <input
                   type="email"
                   name="correo"
                   id="correo"
-                  class="input-formulario"
+                  class="input"
                   placeholder="Ingrese su Correo"
-                  style="width: 100%"
+                  style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
                   required
               >
-              <label for="telefono" class="etiqueta-label">Número de celular:</label>
+              <label for="" class="label">Correo Electrónico:</label>
+            </div>
+            <div class="field">
               <input
                   type="number"
                   name="telefono"
                   id="telefono"
-                  class="input-formulario"
+                  class="input"
                   placeholder="Ingrese su número de celular"
-                  style="width: 100%"
+                  style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
                   required
               >
-              <label for="domicilio" class="etiqueta-label">Domicilio:</label>
+              <label for="" class="label">Número de celular:</label>
+            </div>
+            <div class="field">
               <input
-                  type="text"
-                  name="domicilio"
-                  id="domicilio"
-                  class="input-formulario"
-                  placeholder="Ingrese su dirección"
-                  style="width: 100%"
-                  required
+                type="text"
+                name="domicilio"
+                id="domicilio"
+                class="input"
+                placeholder="Ingrese su dirección"
+                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                required
               >
-              <label for="fechaInicio" class="etiqueta-label">Fecha de Inicio:</label>
+              <label for="" class="label">Domicilio:</label>
+            </div>
+            <div class="field">
               <input
-                  type="date"
-                  name="fechaInicio"
-                  id="fechaInicio"
-                  class="input-formulario"
-                  placeholder="Ingrese la Fecha de Inicio"
-                  style="width: 100%"
-                  required
+                type="date"
+                name="fechaInicio"
+                id="fechaInicio"
+                class="input"
+                placeholder="Ingrese la Fecha de Inicio"
+                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                required
               >
-              <label for="fechaFin" class="etiqueta-label">Fecha Fin:</label>
+              <label for="" class="label">Fecha de Inicio:</label>
+            </div>
+            <div class="field">
               <input
-                  type="date"
-                  name="fechaFin"
-                  id="fechaFin"
-                  class="input-formulario"
-                  placeholder="Ingrese la fecha final"
-                  style="width: 100%"
-                  required
-              >
-          </fieldset>
-      </form>
-  </div>
-  <div class="modal-footer">
-      <button type="button" class="" data-bs-dismiss="modal">Cerrar</button>
-      <button type="submit" value="" class="btnUpdate" id="btnUpdate">Agregar</button>
-  </div>
-</div>
-</div>
-</div>
+                type="date"
+                name="fechaFin"
+                id="fechaFin"
+                class="input"
+                placeholder="Ingrese la fecha final"
+                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                required
+               >
+              <label for="" class="label">Fecha Fin:</label>
+            </div>
 
-    
+            <div class="modal-footer modalAdd">
+              <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+              <!--BOTON SUBMIT FORM-->
+              <input
+                type="submit"
+                class="btnUpdate"
+                id="btnUpdate"
+                value="Apartar"
+                data-bs-dismiss="modal"
+                style="width: 10rem;
+                      height: 3rem;
+                      border-radius: 1rem;
+                      outline: none;
+                      border: none;
+                      background-color: #31a252;
+                      font-size: 1.2rem;
+                      color: #fff;
+                      font-weight: 700;" 
+                disabled
+              >
+
+            </div>
+        </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <!-- Modal -->
@@ -591,6 +632,7 @@
     <script type="module" src="./js/firebase_connection.js"></script>
     <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
     
 
 </body>
