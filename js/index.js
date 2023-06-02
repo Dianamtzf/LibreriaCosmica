@@ -83,7 +83,7 @@ const creaCards = (books) => {
         })
         clone.querySelector('#btnModal-update').addEventListener('click', () => {
             librosUpdate = item
-            console.log('Libro para actualizar =>', librosUpdate.id)
+            console.log('Libro para actualizar =>', librosUpdate.id, librosUpdate.lib_titulo)
         })
         fragment.appendChild(clone)
     })
@@ -152,7 +152,6 @@ function main() {
         );
         resultsContainer.innerHTML=''
         creaCards(temp);
-        
 
     });
      
@@ -192,7 +191,9 @@ btnUpdate.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
     await updateBook(librosUpdate)
     librosUpdate = {}
-    //window.location.reload()
+    setTimeout(function () {
+        window.location.reload()
+    }, 1000)
 })
 
 btnDevolver.addEventListener('click', async() => {
@@ -200,7 +201,9 @@ btnDevolver.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnDevolver')
     await returnBook(librosDev)
     librosDev = {}
-    window.location.reload()
+    setTimeout(function () {
+        window.location.reload()
+    }, 1000)
     
 })
 

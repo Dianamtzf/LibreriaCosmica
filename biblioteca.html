@@ -393,7 +393,7 @@
               bottom: 5px;"
         
             >
-              <button type="button" class="Apartar" id="btnModal-devolver" data-bs-toggle="modal" data-bs-target="#devolver">
+              <button type="button" class="Devolver" id="btnModal-devolver" data-bs-toggle="modal" data-bs-target="#devolver">
                 Devolver Libro
               </button>
             </div>
@@ -402,7 +402,7 @@
       </template>
     </section>
 
-<!-- Modal -->
+<!-- Modal Apartar-->
 
 <div class="modal fade" id="apartar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -456,6 +456,7 @@
                   name="telefono"
                   id="telefono"
                   class="input"
+                  pattern="[0-9]{10}"
                   placeholder="Ingrese su número de celular"
                   style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
                   required
@@ -498,38 +499,30 @@
                >
               <label for="" class="label">Fecha Fin:</label>
             </div>
-
-            <div class="modal-footer modalAdd">
-              <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
-              <!--BOTON SUBMIT FORM-->
-              <input
-                type="submit"
-                class="btnUpdate"
-                id="btnUpdate"
-                value="Apartar"
-                data-bs-dismiss="modal"
-                style="width: 10rem;
-                      height: 3rem;
-                      border-radius: 1rem;
-                      outline: none;
-                      border: none;
-                      background-color: #31a252;
-                      font-size: 1.2rem;
-                      color: #fff;
-                      font-weight: 700;" 
-                disabled
-              >
-
-            </div>
         </fieldset>
         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+        <!--BOTON SUBMIT FORM-->
+        <button type="submit" value="" class="btnUpdate" id="btnUpdate" 
+                style="width: 10rem;
+                height: 3rem;
+                border-radius: 1rem;
+                outline: none;
+                border: none;
+                background-color: #31a252;
+                font-size: 1.2rem;
+                color: #fff;
+                font-weight: 700;"
+          > Apartar </button>
       </div>
     </div>
   </div>
 </div>
 
 
-    <!-- Modal -->
+    <!-- Modal Eliminar-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
