@@ -11,13 +11,17 @@ const btnDevolver = document.querySelector('#btnDevolver')
 const btnUsuarios = document.querySelector('#presLibros')
 
 
+const imgStephen = document.getElementById('imgStephen') 
+const imgClaire = document.getElementById('imgClaire') 
+const imgJohn = document.getElementById('imgJohn') 
+const imgNail = document.getElementById('imgNail') 
+
 //---------------Carga de tarjetas---------------------
 
 const cardBook = document.querySelector('#cardBook').content
 const cardBookPres = document.querySelector('#cardBookPres').content
 const cardUsers = document.querySelector('#cardUsers').content
 const contenido = document.querySelector('#contenido')
-const contenedor = document.querySelector('#contenedor')
 const fragment = document.createDocumentFragment()
 
 let libros = []
@@ -147,7 +151,8 @@ function main() {
 
         creaCards(temp);
     });
-
+     
+    //
 
 }
 // ---------------- Funciones ------------------
@@ -243,8 +248,6 @@ async function returnBook() {
     await updateLibro(sendData)
 }
 
-
-
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     categoria.addEventListener('click', (e) => {
@@ -264,5 +267,26 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     });
   });
 
+  imgStephen.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Stephen King')
+    creaCards(temp)
+ });
 
+ imgClaire.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Claire Martin')
+    creaCards(temp)
+ });
 
+ imgJohn.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'John Green')
+    creaCards(temp)
+ });
+
+ imgNail.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_autor == 'Neil Gaiman')
+    creaCards(temp)
+ });

@@ -66,7 +66,7 @@
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 2.3rem;">
+            <div class="modal-content" style="border-radius: 10px;">
               <div class="modal-header" style="background-color: #171f26; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
                 <h5 class="modal-title" id="exampleModalLabel" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Agregar Libro</h5>
                 
@@ -183,13 +183,14 @@
 
     <main class="main">
         <section class="carrusel" 
-                  style="display: flex; 
-                          align-items: center; 
-                          justify-content: center; 
-                          /*position: absolute;*/
-                          width: 100%; 
-                          height: 42rem; 
-                          margin-top: 1rem;">
+                  style=" display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          /* position: absolute; */
+                          width: 100%;
+                          /* height: 42rem; */
+                          margin-top: 1rem;
+                          /* margin-left: 8rem;">
     
             <div id="carouselExampleFade" class="carousel slide carousel-fade" style="height: 40vh; width: 85%;" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -239,7 +240,7 @@
                         top: 360px;
                         left: 35px;">Sumérgete en el terror literario de<br>
                         Stephen King y despierta tus<br> pesadillas más cautivadoras.</p>
-              <button class="btnDescubrelo" style="top: 525px;">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgStephen" style="top: 525px;">Descúbrelos</button>
             </div>
   
             <div style="position: relative; margin: 25px;">
@@ -252,7 +253,7 @@
                         top: 360px;
                         left: 35px;">Descubre un mundo de emociones<br>
                         y reflexiones en los libros de<br> Claire Martin.</p>
-              <button class="btnDescubrelo" style="background-color: #ff275e; color: white; top: 525px;">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgClaire" style="background-color: #ff275e; color: white; top: 525px;">Descúbrelos</button>
             </div>
             
             <div style="position: relative; margin: 25px;">
@@ -265,7 +266,7 @@
                         top: 368px;
                         left: 213px;">Explora el poder de las palabras<br>
                         y el amor en los cautivadores<br> libros de John Green.</p>
-              <button class="btnDescubrelo">Descúbrelos</button>
+              <button class="btnDescubrelo" id="imgJohn">Descúbrelos</button>
             </div>
   
             <div style="position: relative; margin: 25px;">
@@ -277,8 +278,8 @@
                         position: absolute;
                         top: 370px;
                         right: 28px;">Adéntrate en los mundos mágicos<br>
-                        y fascinantes en los<br> libros de John Green.</p>
-              <button class="btnDescubrelo">Descúbrelos</button>
+                        y fascinantes en los<br> libros de Neil Gaiman.</p>
+              <button class="btnDescubrelo" id="imgNail">Descúbrelos</button>
             </div>
           </div>
           
