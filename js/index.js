@@ -316,38 +316,22 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
   });
 
   form.addEventListener('input', () => { 
-
     const inputs = form.querySelectorAll('input'); 
-    
     let isFormValid = true; 
-    
-     
-    
     inputs.forEach((input) => {
-    
-     if (!input.value) {
-    
-     isFormValid = false;
-    
-     } 
-    
+        if (!input.value) {
+        isFormValid = false;
+        } 
     }); 
-    
     if (isFormValid) {
-    
-     addButton.removeAttribute('disabled'); 
-    
+        addButton.removeAttribute('disabled'); 
     } else {
-    
-     addButton.setAttribute('disabled', 'disabled');
-    
-     } 
-    });
+        addButton.setAttribute('disabled', 'disabled');
+    } 
+});
   
-  
-  
-
-  imgStephen.addEventListener('click', () => {
+//IMAGENES DEL INICIO
+imgStephen.addEventListener('click', () => {
     let temp = []
     temp = libros.filter((libro) => libro.lib_autor == 'Stephen King')
     creaCards(temp)
