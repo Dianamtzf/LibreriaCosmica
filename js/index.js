@@ -11,7 +11,7 @@ const btnDevolver = document.querySelector('#btnDevolver')
 const btnUsuarios = document.querySelector('#presLibros')
 
 const resultsContainer = document.querySelector('.results')
-
+const btnUp = document.getElementById('btnUpdate');
 
 //---------------Carga de tarjetas---------------------
 
@@ -155,11 +155,19 @@ function main() {
 
 }
 // ---------------- Funciones ------------------
-btnUsuarios.addEventListener('click', async() => {
-    let librosPrestados = []
+btnUsuarios.addEventListener('click', async () => {
+    let librosPrestados = [];
     librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+    resultsContainer.innerHTML = '';
     creaUsers(librosPrestados);
-})
+  
+    const tituloCategoria = document.createElement('h1');
+    tituloCategoria.textContent = "Sistema de Apartado 😘😘😘";
+    tituloCategoria.classList.add('category-title');
+  
+    resultsContainer.appendChild(tituloCategoria);
+  });
+  
 
 btnBorrar.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
@@ -184,6 +192,7 @@ btnDevolver.addEventListener('click', async() => {
     await returnBook(librosDev)
     librosDev = {}
     window.location.reload()
+    
 })
 
 
@@ -288,7 +297,18 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
   })
   
   
+  formApartar.addEventListener('input', () => {
+    const inputs = formApartar.querySelectorAll('input');
+    let isFormValid = true;
   
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        isFormValid = false;
+      }
+    });
+  
+    btnUp.disabled = !isFormValid;
+  });
   
   
 
