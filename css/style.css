@@ -504,6 +504,7 @@ html {
 .main {
     position: relative;
     height: 45vh;
+    margin-block-end: 3rem;
 }
 
 .sugerencias {
@@ -750,4 +751,5 @@ html {
     color: #333;
     text-align: center;
     margin-bottom: 20px;
+    margin: 30px;
   }

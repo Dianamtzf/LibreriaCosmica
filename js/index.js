@@ -1,6 +1,6 @@
 import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
 
-const form = document.querySelector(".formulario") // Selects the form
+const form = document.querySelector(".form") // Selects the form
 const formApa = document.querySelector(".formApartar")
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
@@ -163,6 +163,7 @@ function main() {
 btnUsuarios.addEventListener('click', async() => {
     let librosPrestados = []
     librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+    resultsContainer.innerHTML = ''
     creaUsers(librosPrestados);
 })
 
@@ -185,6 +186,7 @@ btnUpdate.addEventListener('click', async() => {
 })
 
 btnDevolver.addEventListener('click', async() => {
+    resultsContainer.innerHTML=''
     console.log('Entra al EventListener de btnDevolver')
     await returnBook(librosDev)
     librosDev = {}
