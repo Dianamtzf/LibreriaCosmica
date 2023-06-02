@@ -7,21 +7,26 @@ const Buscar = document.getElementById('inBuscador')
 const btnBorrar = document.querySelector('#btnDelete')
 const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
 const btnUpdate = document.querySelector('#btnUpdate')
-const resultsContainer = document.querySelector('.results')
+const btnDevolver = document.querySelector('#btnDevolver')
+const btnUsuarios = document.querySelector('#presLibros')
 
+const resultsContainer = document.querySelector('.results')
 
 
 //---------------Carga de tarjetas---------------------
 
 const cardBook = document.querySelector('#cardBook').content
 const cardBookPres = document.querySelector('#cardBookPres').content
+const cardUsers = document.querySelector('#cardUsers').content
 const contenido = document.querySelector('#contenido')
+const contenedor = document.querySelector('#contenedor')
 const fragment = document.createDocumentFragment()
 
 let libros = []
 let categoriaSeleccionada = '';
 let librosDelete = {}
 let librosUpdate = {}
+let librosDev = {}
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
@@ -53,30 +58,6 @@ window.onscroll = function() {
         buttonUp.style.transform = "scale(0)"
     }
 } 
-
-/*const tableBook = document.querySelector('#tableBook').content
-//const contenido = document.querySelector('#contenido')
-//const fragment = document.createDocumentFragment()
-
-
-const creaTabla = (books) => {
-    contenido.innerHTML = '';
-    const tableRow = tableBook.querySelector('tr');
-  
-    books.forEach((item) => {
-      const clone = document.importNode(tableRow, true);
-      clone.querySelector('.tituloLib').textContent = item.lib_titulo;
-      clone.querySelector('.presNombre').textContent = item.pres_nombre;
-      clone.querySelector('.direccion').textContent = item.pres_direccion;
-      clone.querySelector('.correo').textContent = item.pres_correo;
-      clone.querySelector('.telefono').textContent = item.pres_telefono;
-      clone.querySelector('.fechaPres').textContent = item.pres_fecha_inicio;
-      clone.querySelector('.fechaDev').textContent = item.pres_fecha_fin;
-  
-      fragment.appendChild(clone);
-    });
-    contenido.appendChild(fragment);
-};*/
 
 //Tarjetas para Books disponibles
 const creaCards = (books) => {
@@ -122,10 +103,34 @@ const creaCardsPres = (books) => {
     contenido.appendChild(fragment)
 }
 
+//Tarjetas para Usuarios
+const creaUsers = (books) => {
+    contenido.innerHTML = '';
+    books.forEach((item) => {
+        console.log(item)
+        cardUsers.querySelector('img').setAttribute('src', item.pres_img)
+        cardUsers.querySelector('.nombre').textContent = item.pres_nombre
+        cardUsers.querySelector('.correo').textContent = item.pres_correo
+        cardUsers.querySelector('.tel').textContent = item.pres_telefono
+        cardUsers.querySelector('.domicilio').textContent = item.pres_domicilio
+        cardUsers.querySelector('.fechaInicio').textContent = item.pres_fecha_inicio
+        cardUsers.querySelector('.fechaFin').textContent = item.pres_fecha_fin
+
+        cardUsers.querySelector('.tituloLib').textContent = item.lib_titulo
+        const clone = cardUsers.cloneNode(true)
+        clone.querySelector('#btnModal-devolver').addEventListener('click', () => {
+            librosDev = item
+            console.log('Libro para actualizar =>', librosDev.id)
+        })
+        fragment.appendChild(clone)
+    })
+    contenido.appendChild(fragment)
+}
+
 
 function main() {
 
-    creaCards(libros)
+    //creaCards(libros)
     btnAgregar.addEventListener('click', async () => {
         await insertBook()
         setTimeout(function () {
@@ -150,6 +155,11 @@ function main() {
 
 }
 // ---------------- Funciones ------------------
+btnUsuarios.addEventListener('click', async() => {
+    let librosPrestados = []
+    librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
+    creaUsers(librosPrestados);
+})
 
 btnBorrar.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
@@ -169,6 +179,12 @@ btnUpdate.addEventListener('click', async() => {
     //window.location.reload()
 })
 
+btnDevolver.addEventListener('click', async() => {
+    console.log('Entra al EventListener de btnDevolver')
+    await returnBook(librosDev)
+    librosDev = {}
+    window.location.reload()
+})
 
 
 // Funcion para añadir un libro
@@ -212,6 +228,26 @@ async function updateBook() {
     }
     await updateLibro(sendData)
 }
+
+// Funcion para borrar un prestamo
+async function returnBook() {
+    // Data to be added to the database
+    const sendData = {
+        id: librosDev.id,
+        lib_disponibilidad: true,
+        // 
+        pres_img: null,
+        pres_correo: null,
+        pres_domicilio: null,
+        pres_fecha_fin: null,
+        pres_fecha_inicio: null,
+        pres_nombre: null,
+        pres_telefono: null
+    }
+    await updateLibro(sendData)
+}
+
+
 
 //Evento click en las categorías del menú lateral
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
