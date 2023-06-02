@@ -164,9 +164,9 @@ loginGoog.addEventListener('click', (e) => {
     });
 });
 
-
+/*
 //logout
-/*const user = auth.currentUser;
+const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, see docs for a list of available properties
@@ -191,3 +191,49 @@ logout.addEventListener('click', (e) =>{
             alert('Error al cerrar sesión');
     });
 })*/
+
+
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const signupButton = document.getElementById('signup_button');
+
+// Función para verificar si todos los campos de entrada están completos
+function checkInputs() {
+    const usernameValue = usernameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const passwordValue = passwordInput.value.trim();
+
+    if (usernameValue !== '' && emailValue !== '' && passwordValue !== '') {
+        signupButton.disabled = false;
+    } else {
+        signupButton.disabled = true;
+    }
+}
+
+// Agregar eventos de cambio a los campos de entrada
+usernameInput.addEventListener('input', checkInputs);
+emailInput.addEventListener('input', checkInputs);
+passwordInput.addEventListener('input', checkInputs);
+
+
+const emailLoginInput = document.getElementById('email_l');
+const passwordLoginInput = document.getElementById('password_l');
+const loginButton = document.querySelector('.login');
+
+// Función para verificar si los campos de entrada están completos
+function checkLoginInputs() {
+    const emailLoginValue = emailLoginInput.value.trim();
+    const passwordLoginValue = passwordLoginInput.value.trim();
+
+    if (emailLoginValue !== '' && passwordLoginValue !== '') {
+        loginButton.disabled = false;
+    } else {
+        loginButton.disabled = true;
+    }
+}
+
+// Agregar eventos de cambio a los campos de entrada
+emailLoginInput.addEventListener('input', checkLoginInputs);
+passwordLoginInput.addEventListener('input', checkLoginInputs);
+

@@ -7,6 +7,37 @@ html {
     box-sizing: inherit;
 }
 
+/*Scroll*/
+::-webkit-scrollbar {
+    width: 10px; /* Ancho del scroll */
+    background-color: #f1f1f1; /* Color de fondo */
+}
+
+/* Barra del scroll */
+::-webkit-scrollbar-thumb {
+    background-color: purple; /* Color de la barra del scroll */
+    border-radius: 5px; /* Borde redondeado */
+}
+
+/* Flecha de desplazamiento al inicio o final */
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* Riel del scroll */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color del riel del scroll */
+}
+
+/* Efecto de sombra en el scroll */
+::-webkit-scrollbar-thumb:hover {
+    background-color: darkpurple; /* Color de la barra del scroll al pasar el mouse */
+}
+
+/* Efecto de sombra en el riel del scroll */
+::-webkit-scrollbar-track:hover {
+    background-color: #d9d9d9; /* Color del riel del scroll al pasar el mouse */
+}
 
 .header {
     width: 100%;
@@ -515,7 +546,7 @@ html {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    background: linear-gradient(to top, #722b85, #ffffff);
+    
 }
 
 .btnDescubrelo{
@@ -564,7 +595,9 @@ html {
     border-color: rgba(0, 0, 0, 0.1);
 }
 
-
+.contenedor{
+    background: linear-gradient(to top, #722b85, #ffffff);
+}
 
 
 
