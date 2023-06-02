@@ -10,6 +10,8 @@ const btnUpdate = document.querySelector('#btnUpdate')
 const btnDevolver = document.querySelector('#btnDevolver')
 const btnUsuarios = document.querySelector('#presLibros')
 
+const resultsContainer = document.querySelector('.results')
+
 
 const imgStephen = document.getElementById('imgStephen') 
 const imgClaire = document.getElementById('imgClaire') 
@@ -148,8 +150,10 @@ function main() {
             (book.lib_titulo.toLowerCase().includes(Buscar.value.toLowerCase()) ||
             book.lib_autor.toLowerCase().includes(Buscar.value.toLowerCase()))
         );
-
+        resultsContainer.innerHTML=''
         creaCards(temp);
+        
+
     });
      
     //
@@ -177,7 +181,7 @@ btnUpdate.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
     await updateBook(librosUpdate)
     librosUpdate = {}
-    window.location.reload()
+    //window.location.reload()
 })
 
 btnDevolver.addEventListener('click', async() => {
@@ -252,20 +256,44 @@ async function returnBook() {
 document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     categoria.addEventListener('click', (e) => {
       e.preventDefault();
-      categoriaSeleccionada = categoria.textContent;
-      if(categoriaSeleccionada == 'Prestados'){
-          let librosPrestados = []
-          librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-          creaCardsPres(librosPrestados);
+      categoriaSeleccionada = categoria.textContent
+  
+      // Vaciar la sección de resultados
+      resultsContainer.innerHTML=''
+  
+      // Agregar el título de la categoría
+      const tituloCategoria = document.createElement('h1')
+      tituloCategoria.textContent = categoriaSeleccionada;
+  
+      tituloCategoria.classList.add('category-title')
+      tituloCategoria.classList.add('fade-in')
+
+      resultsContainer.appendChild(tituloCategoria)
+
+      const navDivider = document.createElement('nav');
+      navDivider.classList.add('nav-divider');
+      navDivider.classList.add('centrado');
+      resultsContainer.appendChild(navDivider);
+  
+      if (categoriaSeleccionada === 'Prestados') {
+        let librosPrestados = []
+        librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false)
+        creaCardsPres(librosPrestados)
       } else {
-          let librosFiltrados = []
-          librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada);
-          creaCards(librosFiltrados);
+        let librosFiltrados = []
+        librosFiltrados = libros.filter((libro) => libro.lib_categoria === categoriaSeleccionada)
+        creaCards(librosFiltrados)
       }
-      const menuCheckbox = document.getElementById('btn-menu');
+  
+      const menuCheckbox = document.getElementById('btn-menu')
       menuCheckbox.checked = false; // Cierra el menú al hacer clic en una categoría
-    });
-  });
+    })
+  })
+  
+  
+  
+  
+  
 
   imgStephen.addEventListener('click', () => {
     let temp = []
