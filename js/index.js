@@ -9,9 +9,9 @@ const btnCancelar = document.querySelector('#btnCancel') // Selects the button t
 const btnUpdate = document.querySelector('#btnUpdate')
 const btnDevolver = document.querySelector('#btnDevolver')
 const btnUsuarios = document.querySelector('#presLibros')
-
+const addButton =  document.getElementById('btnAdd')
 const resultsContainer = document.querySelector('.results')
-
+const btnUp = document.getElementById('btnUpdate');
 
 const imgStephen = document.getElementById('imgStephen') 
 const imgClaire = document.getElementById('imgClaire') 
@@ -47,7 +47,7 @@ function scrollUp() {
     var currentScroll = document.documentElement.scrollTop || document.body.scrollTop
     if(currentScroll > 0) {
         window.requestAnimationFrame(scrollUp)
-        window.scrollTo(0, currentScroll - (currentScroll / 5))
+        window.scrollTo(0, 0)
         buttonUp.style.transform = "scale(0)"
     }
 }
@@ -160,12 +160,22 @@ function main() {
 
 }
 // ---------------- Funciones ------------------
-btnUsuarios.addEventListener('click', async() => {
-    let librosPrestados = []
+btnUsuarios.addEventListener('click', async () => {
+    let librosPrestados = [];
     librosPrestados = libros.filter((libro) => libro.lib_disponibilidad == false);
-    resultsContainer.innerHTML = ''
+    resultsContainer.innerHTML = '';
     creaUsers(librosPrestados);
-})
+  
+    const tituloCategoria = document.createElement('h1');
+    tituloCategoria.textContent = "Sistema de Usuarios";
+    tituloCategoria.classList.add('category-title');
+    resultsContainer.appendChild(tituloCategoria);
+    const navDivider = document.createElement('nav');
+    navDivider.classList.add('nav-divider');
+    navDivider.classList.add('centrado');
+    resultsContainer.appendChild(navDivider);
+  });
+  
 
 btnBorrar.addEventListener('click', async() => {
     console.log('Entra al EventListener de btnBorrar')
@@ -191,6 +201,7 @@ btnDevolver.addEventListener('click', async() => {
     await returnBook(librosDev)
     librosDev = {}
     window.location.reload()
+    
 })
 
 
@@ -293,6 +304,45 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
   })
   
   
+  formApa.addEventListener('input', () => {
+    const inputs = formApa.querySelectorAll('input');
+    let isFormValid = true;
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        isFormValid = false;
+      }
+    });
+    btnUp.disabled = !isFormValid;
+  });
+
+  form.addEventListener('input', () => { 
+
+    const inputs = form.querySelectorAll('input'); 
+    
+    let isFormValid = true; 
+    
+     
+    
+    inputs.forEach((input) => {
+    
+     if (!input.value) {
+    
+     isFormValid = false;
+    
+     } 
+    
+    }); 
+    
+    if (isFormValid) {
+    
+     addButton.removeAttribute('disabled'); 
+    
+    } else {
+    
+     addButton.setAttribute('disabled', 'disabled');
+    
+     } 
+    });
   
   
   
