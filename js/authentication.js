@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, Go
 const signUp = document.querySelector('.signUp') // Selects the button to signup
 const login = document.querySelector('.login') // Selects the button to login
 const loginGoog = document.querySelector('.loginGoog') //Selects the button ton login with Google
-//const logout = document.querySelector('.logout') // Selects the button to logout
+//const logout = document.querySelector('btnCerrarSesion') // Selects the button to logout
 
 
 // Your web app's Firebase configuration
@@ -164,7 +164,7 @@ loginGoog.addEventListener('click', (e) => {
     });
 });
 
-/*
+
 //logout
 const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
@@ -178,7 +178,7 @@ onAuthStateChanged(auth, (user) => {
         // ...
     }
 });
-
+/*
 logout.addEventListener('click', (e) =>{
     signOut(auth).then(() => {
         // Sign-out successful.
@@ -186,7 +186,7 @@ logout.addEventListener('click', (e) =>{
     }).catch((error) => {
         // An error happened.
         const errorCode = error.code;
-            const errorMessage = error.message;
+        const errorMessage = error.message;
             //alert(errorMessage);
             alert('Error al cerrar sesión');
     });

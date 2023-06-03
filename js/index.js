@@ -357,3 +357,44 @@ imgStephen.addEventListener('click', () => {
     temp = libros.filter((libro) => libro.lib_autor == 'Neil Gaiman')
     creaCards(temp)
  });
+
+
+
+
+//--------------------LOGOUT----------------------------------
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getAuth, signOut} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+const logout = document.getElementById('btnLogout')// Selects the button to logout
+
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBT1L4DJjQAHciOmgUbNccepE0DyDvoStE",
+  authDomain: "authentication-users-a2ae0.firebaseapp.com",
+  databaseURL: "https://authentication-users-a2ae0-default-rtdb.firebaseio.com",
+  projectId: "authentication-users-a2ae0",
+  storageBucket: "authentication-users-a2ae0.appspot.com",
+  messagingSenderId: "688812296811",
+  appId: "1:688812296811:web:62fdf4febedbbc5284bf2e"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+logout.addEventListener('click', (e) =>{
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        //alert('LogOut successfully')
+        window.location.href = "./"; 
+    }).catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        //alert(errorMessage);
+        alert('Error al cerrar sesión', errorMessage);
+    });
+})
