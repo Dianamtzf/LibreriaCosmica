@@ -1,13 +1,15 @@
-import {  getLibros, saveLibro, deleteLibro, updateLibro } from './firebase_connection.js' // Imports the querys
+import {  getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo } from './firebase_connection.js' // Imports the querys
 
 const form = document.querySelector(".form") // Selects the form
 const formApa = document.querySelector(".formApartar")
+const formRen = document.querySelector(".formRenovar")
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
 const btnBorrar = document.querySelector('#btnDelete')
 const btnCancelar = document.querySelector('#btnCancel') // Selects the button to cancel
 const btnUpdate = document.querySelector('#btnUpdate')
 const btnDevolver = document.querySelector('#btnDevolver')
+const btnRenew = document.querySelector('#btnRenew')
 const btnUsuarios = document.querySelector('#presLibros')
 const addButton =  document.getElementById('btnAdd')
 const resultsContainer = document.querySelector('.results')
@@ -17,6 +19,7 @@ const imgStephen = document.getElementById('imgStephen')
 const imgClaire = document.getElementById('imgClaire') 
 const imgJohn = document.getElementById('imgJohn') 
 const imgNail = document.getElementById('imgNail') 
+const imgPerfume = document.getElementById('imgPerfume') 
 
 //---------------Carga de tarjetas---------------------
 
@@ -30,7 +33,8 @@ let libros = []
 let categoriaSeleccionada = '';
 let librosDelete = {}
 let librosUpdate = {}
-let librosDev = {}
+let librosDev = {} //libro para devolver
+let librosRen = {} //libro para renovar
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
@@ -126,6 +130,10 @@ const creaUsers = (books) => {
             librosDev = item
             console.log('Libro para actualizar =>', librosDev.id)
         })
+        clone.querySelector('#btnModal-renovar').addEventListener('click', () => {
+            librosRen = item
+            console.log('Libro para renovar =>', librosRen.pres_nombre)
+        })
         fragment.appendChild(clone)
     })
     contenido.appendChild(fragment)
@@ -188,7 +196,7 @@ btnCancelar.addEventListener('click', () => {
 })
 
 btnUpdate.addEventListener('click', async() => {
-    console.log('Entra al EventListener de btnBorrar')
+    console.log('Entra al EventListener de btnUpdate')
     await updateBook(librosUpdate)
     librosUpdate = {}
     setTimeout(function () {
@@ -205,6 +213,16 @@ btnDevolver.addEventListener('click', async() => {
         window.location.reload()
     }, 1000)
     
+})
+
+btnRenew.addEventListener('click', async() => {
+    resultsContainer.innerHTML=''
+    console.log('Entra al EventListener de btnRenew')
+    await renewBook(librosRen)
+    librosRen = {}
+    setTimeout(function () {
+        window.location.reload()
+    }, 1000)
 })
 
 
@@ -266,6 +284,18 @@ async function returnBook() {
         pres_telefono: null
     }
     await updateLibro(sendData)
+}
+
+// Funcion para renovar prestamo
+async function renewBook() {
+    // Data to be added to the database
+    const sendData = {
+        id: librosRen.id,
+        // 
+        pres_fecha_fin: formRen.fechaFin.value,
+        pres_fecha_inicio: formRen.fechaInicio.value
+    }
+    await updatePrestamo(sendData)
 }
 
 //Evento click en las categorías del menú lateral
@@ -358,6 +388,11 @@ imgStephen.addEventListener('click', () => {
     creaCards(temp)
  });
 
+ imgPerfume.addEventListener('click', () => {
+    let temp = []
+    temp = libros.filter((libro) => libro.lib_titulo == 'El perfume del rey')
+    creaCards(temp)
+ });
 
 
 
@@ -398,3 +433,6 @@ logout.addEventListener('click', (e) =>{
         alert('Error al cerrar sesión', errorMessage);
     });
 })
+
+
+

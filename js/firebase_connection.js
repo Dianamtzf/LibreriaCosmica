@@ -78,7 +78,22 @@ const deleteLibro = async (lib) => {
       console.error("¡Error! No se pudo actualizar el libro:", error);
     }
   }
+
+  // UPDATE hacerlo manualmente en el conexion
+  const updatePrestamo = async (lib) => {
+    try {
+      console.log('@@@',lib.id)
+      const libroRef = doc(libros, lib.id);
+      await updateDoc(libroRef, {
+        pres_fecha_fin: lib.pres_fecha_fin,
+        pres_fecha_inicio: lib.pres_fecha_inicio,
+      });
+      console.log("Prestamo actualizado correctamente:");
+    } catch (error) {
+      console.error("¡Error! No se pudo actualizar el Prestamo:", error);
+    }
+  }
   
   
 
-export { getLibros, saveLibro, deleteLibro, updateLibro }
+export { getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo }

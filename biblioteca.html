@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -199,7 +200,7 @@
                 <div class="carousel-item">
                   <img src="images/imagen04.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" id="imgPerfume" style="cursor: pointer;">
                   <img src="images/imagen05.webp" class="d-block w-100" style="height: 30rem;" alt="...">
                 </div>
               </div>
@@ -394,7 +395,20 @@
         
             >
               <button type="button" class="Devolver" id="btnModal-devolver" data-bs-toggle="modal" data-bs-target="#devolver">
+                <i class="fa-solid fa-rotate-right fa-fade"></i>
                 Devolver Libro
+              </button>
+              <button type="button" value="" class="Renovar" id="btnModal-renovar" data-bs-toggle="modal" data-bs-target="#renovar">
+                <i class="fa-solid fa-calendar-days fa-fade"></i>
+                Renovar Préstamo
+              </button>
+              <button type="button" value="" class="Actualizar" id="btnModal-actualizar" data-bs-toggle="modal" data-bs-target="#actualizar" style="background-color: #ffffff00; border: none;">
+                <a class="fa-solid fa-pen-to-square"
+                style="font-size: 20px;
+                text-decoration: none;
+                color: #ffa907;
+                cursor: pointer;"
+                ></a>
               </button>
             </div>
           </div>
@@ -402,124 +416,184 @@
       </template>
     </section>
 
-<!-- Modal Apartar-->
 
-<div class="modal fade" id="apartar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="border-radius: 10px;">
-      <div class="modal-header" style="background-color: #800080; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
-        <h5 class="modal-title" id="apartar" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Apartar Libro</h5>
-        
-      </div>
-      <div class="modal-body">
-        <form name="formApartar" class="formApartar formulario">
-          <fieldset>
-            <div class="field">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                class="input"
-                placeholder="Nombre"
-                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                required
-            >
-            <label for="" class="label">Nombre del Solicitante:</label>
-            </div>
-            <div class="field">
-              <input
-                type="text"
-                name="imagen"
-                id="imagen"
-                class="input"
-                placeholder="Link de imagen"
-                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                required
-              >
-              <label for="" class="label">Foto de identificación:</label>
-            </div>
-            <div class="field">
-              <input
-                  type="email"
-                  name="correo"
-                  id="correo"
-                  class="input"
-                  placeholder="Ingrese su Correo"
-                  style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                  required
-              >
-              <label for="" class="label">Correo Electrónico:</label>
-            </div>
-            <div class="field">
-              <input
-                  type="number"
-                  name="telefono"
-                  id="telefono"
-                  class="input"
-                  pattern="[0-9]{10}"
-                  placeholder="Ingrese su número de celular"
-                  style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                  required
-              >
-              <label for="" class="label">Número de celular:</label>
-            </div>
-            <div class="field">
-              <input
-                type="text"
-                name="domicilio"
-                id="domicilio"
-                class="input"
-                placeholder="Ingrese su dirección"
-                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                required
-              >
-              <label for="" class="label">Domicilio:</label>
-            </div>
-            <div class="field">
-              <input
-                type="date"
-                name="fechaInicio"
-                id="fechaInicio"
-                class="input"
-                placeholder="Ingrese la Fecha de Inicio"
-                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                required
-              >
-              <label for="" class="label">Fecha de Inicio:</label>
-            </div>
-            <div class="field">
-              <input
-                type="date"
-                name="fechaFin"
-                id="fechaFin"
-                class="input"
-                placeholder="Ingrese la fecha final"
-                style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
-                required
-               >
-              <label for="" class="label">Fecha Fin:</label>
-            </div>
-        </fieldset>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
-        <!--BOTON SUBMIT FORM-->
-        <button type="submit" value="" class="btnUpdate" id="btnUpdate" 
-                style="width: 10rem;
-                height: 3rem;
-                border-radius: 1rem;
-                outline: none;
-                border: none;
-                background-color: #31a252;
-                font-size: 1.2rem;
-                color: #fff;
-                font-weight: 700;"
-          > Apartar </button>
+    
+
+     <!-- Modal Renovar libro-->
+     <div class="modal fade" id="renovar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 10px;">
+          <div class="modal-header" style="background-color: #800080; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
+            <h5 class="modal-title" id="renovar" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Renovar Préstamo</h5>
+            
+          </div>
+          <div class="modal-body">
+            <form name="formRenovar" class="formRenovar formulario">
+              <fieldset>
+                <div class="field">
+                  <input
+                    type="date"
+                    name="fechaInicio"
+                    id="fechaInicio"
+                    class="input"
+                    placeholder="Ingrese la Fecha de Inicio"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Fecha de Renovación:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="date"
+                    name="fechaFin"
+                    id="fechaFin"
+                    class="input"
+                    placeholder="Ingrese la fecha final"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Fecha de Devolución:</label>
+                </div>
+            </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+            <!--BOTON SUBMIT FORM-->
+            <button type="submit" value="" class="btnRenew" id="btnRenew" 
+                    style="width: 10rem;
+                    height: 3rem;
+                    border-radius: 1rem;
+                    outline: none;
+                    border: none;
+                    background-color: #31a252;
+                    font-size: 1.2rem;
+                    color: #fff;
+                    font-weight: 700;"
+              > Renovar </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
+
+    <!-- Modal Apartar-->
+    <div class="modal fade" id="apartar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 10px;">
+          <div class="modal-header" style="background-color: #800080; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
+            <h5 class="modal-title" id="apartar" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Apartar Libro</h5>
+            
+          </div>
+          <div class="modal-body">
+            <form name="formApartar" class="formApartar formulario">
+              <fieldset>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="input"
+                    placeholder="Nombre"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                >
+                <label for="" class="label">Nombre del Solicitante:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="imagen"
+                    id="imagen"
+                    class="input"
+                    placeholder="Link de imagen"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Foto de identificación:</label>
+                </div>
+                <div class="field">
+                  <input
+                      type="email"
+                      name="correo"
+                      id="correo"
+                      class="input"
+                      placeholder="Ingrese su Correo"
+                      style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                      required
+                  >
+                  <label for="" class="label">Correo Electrónico:</label>
+                </div>
+                <div class="field">
+                  <input
+                      type="number"
+                      name="telefono"
+                      id="telefono"
+                      class="input"
+                      pattern="[0-9]{10}"
+                      placeholder="Ingrese su número de celular"
+                      style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                      required
+                  >
+                  <label for="" class="label">Número de celular:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="domicilio"
+                    id="domicilio"
+                    class="input"
+                    placeholder="Ingrese su dirección"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Domicilio:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="date"
+                    name="fechaInicio"
+                    id="fechaInicio"
+                    class="input"
+                    placeholder="Ingrese la Fecha de Inicio"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Fecha de Inicio:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="date"
+                    name="fechaFin"
+                    id="fechaFin"
+                    class="input"
+                    placeholder="Ingrese la fecha final"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Fecha Fin:</label>
+                </div>
+            </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+            <!--BOTON SUBMIT FORM-->
+            <button type="submit" value="" class="btnUpdate" id="btnUpdate" 
+                    style="width: 10rem;
+                    height: 3rem;
+                    border-radius: 1rem;
+                    outline: none;
+                    border: none;
+                    background-color: #31a252;
+                    font-size: 1.2rem;
+                    color: #fff;
+                    font-weight: 700;"
+              > Apartar </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!-- Modal Eliminar-->
@@ -610,14 +684,20 @@
       <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-   
-    
     <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/firebase_connection.js"></script>
     <script src="https://kit.fontawesome.com/8ae39a9429.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- 
+    <script>
+      // Obtener la fecha local actual en formato YYYY-MM-DD
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = String(now.getMonth() + 1).padStart(2, '0');
+      var day = String(now.getDate()).padStart(2, '0');
+      var today = `${year}-${month}-${day}`;
     
-
-</body>
+      // Establecer la fecha actual como valor predeterminado en el campo de fecha de inicio
+      document.getElementById("fechaInicio").value = today;
+    </script>
+  </body>
 </html>

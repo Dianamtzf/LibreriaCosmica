@@ -59,6 +59,10 @@ input[type="password"] {
     border: none;
     border-radius: 10px;
 }
+
+.loginGoog:hover {
+    background-color: #413855;
+}
 .btn {
     border-radius: 10px;
 }
