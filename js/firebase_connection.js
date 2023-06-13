@@ -94,6 +94,23 @@ const deleteLibro = async (lib) => {
     }
   }
   
+  // UPDATE USER hacerlo manualmente en el conexion
+  const updateUsuario = async (lib) => {
+    try {
+      console.log('@@@',lib.id)
+      const libroRef = doc(libros, lib.id);
+      await updateDoc(libroRef, {
+        pres_correo: lib.pres_correo,
+        pres_domicilio: lib.pres_domicilio,
+        pres_nombre: lib.pres_nombre,
+        pres_telefono: lib.pres_telefono,
+        pres_img: lib.pres_img
+      });
+      console.log("Libro actualizado correctamente:");
+    } catch (error) {
+      console.error("¡Error! No se pudo actualizar el libro:", error);
+    }
+  }
   
 
-export { getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo }
+export { getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo, updateUsuario }

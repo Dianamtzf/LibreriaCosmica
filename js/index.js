@@ -1,8 +1,9 @@
-import {  getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo } from './firebase_connection.js' // Imports the querys
+import {  getLibros, saveLibro, deleteLibro, updateLibro, updatePrestamo, updateUsuario } from './firebase_connection.js' // Imports the querys
 
 const form = document.querySelector(".form") // Selects the form
 const formApa = document.querySelector(".formApartar")
 const formRen = document.querySelector(".formRenovar")
+const formActualizar = document.querySelector(".formActualizar")
 const btnAgregar = document.querySelector('.btnAdd') // Selects the button to add books
 const Buscar = document.getElementById('inBuscador') 
 const btnBorrar = document.querySelector('#btnDelete')
@@ -10,6 +11,7 @@ const btnCancelar = document.querySelector('#btnCancel') // Selects the button t
 const btnUpdate = document.querySelector('#btnUpdate')
 const btnDevolver = document.querySelector('#btnDevolver')
 const btnRenew = document.querySelector('#btnRenew')
+const btnActualizar = document.querySelector('#btnActualizar')
 const btnUsuarios = document.querySelector('#presLibros')
 const addButton =  document.getElementById('btnAdd')
 const resultsContainer = document.querySelector('.results')
@@ -35,6 +37,7 @@ let librosDelete = {}
 let librosUpdate = {}
 let librosDev = {} //libro para devolver
 let librosRen = {} //libro para renovar
+let userUpd = {} //usuario para actualizar
 
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
@@ -134,6 +137,18 @@ const creaUsers = (books) => {
             librosRen = item
             console.log('Libro para renovar =>', librosRen.pres_nombre)
         })
+        clone.querySelector('#btnModal-actualizar').addEventListener('click', () => {
+            userUpd = item;
+
+            // Asignar los valores del usuario al formulario del modal
+            document.getElementById('name').value = userUpd.pres_nombre;
+            document.getElementById('imagen').value = userUpd.pres_img;
+            document.getElementById('correo').value = userUpd.pres_correo;
+            document.getElementById('telefono').value = userUpd.pres_telefono;
+            document.getElementById('domicilio').value = userUpd.pres_domicilio;
+
+            console.log('Usuario para actualizar =>', userUpd.pres_nombre);
+        });
         fragment.appendChild(clone)
     })
     contenido.appendChild(fragment)
@@ -204,6 +219,15 @@ btnUpdate.addEventListener('click', async() => {
     }, 1000)
 })
 
+btnActualizar.addEventListener('click', async() => {
+    console.log('Entra al EventListener de btnActualizar')
+    await updateUser(userUpd)
+    userUpd = {}
+    setTimeout(function () {
+        window.location.reload()
+    }, 1000)
+})
+
 btnDevolver.addEventListener('click', async() => {
     resultsContainer.innerHTML=''
     console.log('Entra al EventListener de btnDevolver')
@@ -267,6 +291,22 @@ async function updateBook() {
     }
     await updateLibro(sendData)
 }
+
+// Funcion para actualizar un usuario
+async function updateUser() {
+    // Data to be added to the database
+    const sendData = {
+        id: userUpd.id,
+        // 
+        pres_img: formActualizar.imagen.value,
+        pres_correo: formActualizar.correo.value,
+        pres_domicilio: formActualizar.domicilio.value,
+        pres_nombre: formActualizar.name.value,
+        pres_telefono: formActualizar.telefono.value
+    }
+    await updateUsuario(sendData)
+}
+
 
 // Funcion para borrar un prestamo
 async function returnBook() {

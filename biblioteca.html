@@ -416,8 +416,100 @@
       </template>
     </section>
 
+    <!-- Modal Actualizar user-->
+    <div class="modal fade" id="actualizar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 10px;">
+          <div class="modal-header" style="background-color: #800080; justify-content: center; margin-bottom: 2rem; border-radius: 5px;">
+            <h5 class="modal-title" id="actualizar" style="color: #fff; font-family: 'Varela Round', sans-serif; font-size: 20px;">Actualizar Usuario</h5>
+            
+          </div>
+          <div class="modal-body">
+            <form name="formActualizar" class="formActualizar formulario">
+              <fieldset>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="input"
+                    placeholder="Nombre"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                >
+                <label for="" class="label">Nombre del Solicitante:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="imagen"
+                    id="imagen"
+                    class="input"
+                    placeholder="Link de imagen"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Foto de identificación:</label>
+                </div>
+                <div class="field">
+                  <input
+                      type="email"
+                      name="correo"
+                      id="correo"
+                      class="input"
+                      placeholder="Ingrese su Correo"
+                      style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                      required
+                  >
+                  <label for="" class="label">Correo Electrónico:</label>
+                </div>
+                <div class="field">
+                  <input
+                      type="number"
+                      name="telefono"
+                      id="telefono"
+                      class="input"
+                      pattern="[0-9]{10}"
+                      placeholder="Ingrese su número de celular"
+                      style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                      required
+                  >
+                  <label for="" class="label">Número de celular:</label>
+                </div>
+                <div class="field">
+                  <input
+                    type="text"
+                    name="domicilio"
+                    id="domicilio"
+                    class="input"
+                    placeholder="Ingrese su dirección"
+                    style="width: 100%; outline: none; font-family: 'Varela Round', sans-serif; font-size: 18px; border: none;"
+                    required
+                  >
+                  <label for="" class="label">Domicilio:</label>
+                </div>
+            </fieldset>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btnCerrarModal" data-bs-dismiss="modal">Cancelar</button>
+            <!--BOTON SUBMIT FORM-->
+            <button type="submit" value="" class="btnActualizar" id="btnActualizar" 
+                    style="width: 10rem;
+                    height: 3rem;
+                    border-radius: 1rem;
+                    outline: none;
+                    border: none;
+                    background-color: #31a252;
+                    font-size: 1.2rem;
+                    color: #fff;
+                    font-weight: 700;"
+              > Actualizar </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    
 
      <!-- Modal Renovar libro-->
      <div class="modal fade" id="renovar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
