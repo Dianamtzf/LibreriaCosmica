@@ -16,6 +16,8 @@ const btnUsuarios = document.querySelector('#presLibros')
 const addButton =  document.getElementById('btnAdd')
 const resultsContainer = document.querySelector('.results')
 const btnUp = document.getElementById('btnUpdate');
+const btnAct = document.getElementById('btnActualizar');
+const btnRen = document.getElementById('btnRenew');
 
 const imgStephen = document.getElementById('imgStephen') 
 const imgClaire = document.getElementById('imgClaire') 
@@ -376,7 +378,7 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     })
   })
   
-  
+   // Para deshabilitar los botones de las acciones por si un campo esta vacio
   formApa.addEventListener('input', () => {
     const inputs = formApa.querySelectorAll('input');
     let isFormValid = true;
@@ -387,6 +389,29 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     });
     btnUp.disabled = !isFormValid;
   });
+
+  formActualizar.addEventListener('input', () => {
+    const inputs = formActualizar.querySelectorAll('input');
+    let isFormValid = true;
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        isFormValid = false;
+      }
+    });
+    btnAct.disabled = !isFormValid;
+  });
+
+  formRen.addEventListener('input', () => {
+    const inputs = formRen.querySelectorAll('input');
+    let isFormValid = true;
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        isFormValid = false;
+      }
+    });
+    btnRen.disabled = !isFormValid;
+  });
+
 
   form.addEventListener('input', () => { 
     const inputs = form.querySelectorAll('input'); 
