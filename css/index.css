@@ -1,7 +1,7 @@
 .contain {
     height: 100vh;
     padding: 20px;
-    margin-left: 30%;
+    margin-left: 55%;
 }
 
 .content {
@@ -11,7 +11,7 @@
     margin-right: 100px;
     height: 100%;
     border-radius: 20px;
-    box-shadow: 0px 0px 21px 13px rgba(13,13,13,0.75);
+    box-shadow: 0px 0px 21px 13px rgba(34, 32, 32, 0.75);
     -webkit-box-shadow: 0px 0px 21px 13px rgba(13,13,13,0.75);
     -moz-box-shadow: 0px 0px 21px 13px rgba(13,13,13,0.75);
 }
@@ -54,14 +54,14 @@ input[type="password"] {
 }
 
 .loginGoog {
-    background-color: #564a6e;
+    background-color: #2f5080;
     color: white;
     border: none;
     border-radius: 10px;
 }
 
 .loginGoog:hover {
-    background-color: #413855;
+    background-color: #22395b;
 }
 .btn {
     border-radius: 10px;
@@ -73,7 +73,7 @@ span {
 }
 
 a {
-    color: #7f419f;
+    color: #2a61a1;
     text-decoration: none;
 }
 
@@ -116,20 +116,20 @@ h5 {
     transform: translateX(10px) translateY(-7px);
     font-size: 0.65em;
     padding: 0 10px;
-    background: #ffed02;
-    border-left: 1px solid #7f419f;
-    border-right: 1px solid #7f419f;
+    background: #bccbe0;
+    border-left: 1px solid #2f5080;
+    border-right: 1px solid #2f5080;
     letter-spacing: 0.2em;
 }
 
 .inputBox:nth-child(2) input:valid ~ span,
 .inputBox:nth-child(2) input:focus ~ span{
-    background: #7f419f;
+    background: #2f5080;
     color: #fff;
     border-radius: 2px;
 }
 
 .inputBox input:valid,
 .inputBox input:focus {
-    border: 1px solid #7f419f;
+    border: 1px solid #2f5080;
 }

@@ -15,7 +15,7 @@ html {
 
 /* Barra del scroll */
 ::-webkit-scrollbar-thumb {
-    background-color: purple; /* Color de la barra del scroll */
+    background-color: #2f5080; /* Color de la barra del scroll */
     border-radius: 5px; /* Borde redondeado */
 }
 
@@ -42,7 +42,7 @@ html {
 .header {
     width: 100%;
     margin: auto;
-    background-color: #ffed02;
+    background-color: #1d3557;
     height: 15vh;
     display: flex;
     justify-content: space-between;
@@ -217,7 +217,7 @@ html {
 .cont-menu {
     width: 100%;
     max-width: 250px;
-    background: #802891;
+    background: #2f5080;
     height: 100vh;
     position: relative;
     transition: all 500ms ease;
@@ -245,7 +245,7 @@ html {
 
 .cont-menu nav a:hover {
     border-left: 5px solid #fff;
-    background: #ffed06;
+    background: #f5deb3;
     color: #000;
 }
 
@@ -277,7 +277,7 @@ html {
     color: #000;
     border-radius: 50px;
     font-size: 20px;
-    border: 1px solid #722b85;
+    border: 1px solid #2f5080;
     transition: all .7s ease;
 }
 
@@ -291,7 +291,7 @@ html {
     top: 0;
     width: 80px;
     height: 80px;
-    background: #722b85;
+    background: #2f5080;
     line-height: 80px;
     border-radius: 50px;
     text-align: center;
@@ -318,7 +318,7 @@ html {
 }
 
 .btn:hover {
-    background: #722b85;
+    background: #2f5080;
 }
 
 /*Boton cerrar modal (agregar libro)*/
@@ -414,9 +414,9 @@ html {
 }
 
 .butn:hover{
-    background-color: #ffee06cb;
-    box-shadow: 0 0 2rem #ffed06;
-    border-color: #ffed06;
+    background-color: #f5deb3;
+    box-shadow: 0 0 2rem #f5deb3;
+    border-color: #f5deb3;
 }
 
 .butn span:nth-child(n) {
@@ -436,20 +436,20 @@ html {
 .butn span:nth-child(2) {
     left: 10%;
     bottom: -10px;
-    background-color: #ffed06;
+    background-color: #f5deb3;
 }
 
 .butn:hover span:nth-child(1) {
     right: 80%;
     transform: rotate(90deg);
-    color: #ffed06;
-    background-color: #ffed06;
+    color: #f5deb3;
+    background-color: #f5deb3;
 }
 
 .butn:hover span:nth-child(2) {
     left: 80%;
     transform: rotate(90deg);
-    color: #ffed06;
+    color: #f5deb3;
 }
 
 .btnCerrarSesion {
@@ -514,7 +514,7 @@ html {
 .formulario .field .input:hover,
 .formulario .field .input:focus,
 .formulario .field .input:not(:placeholder-shown) {
-    border: 1px solid blue;
+    border: 1px solid rgb(20, 20, 52);
     transition: all .3s ease-in-out;
 }
 
@@ -596,7 +596,7 @@ html {
 }
 
 .contenedor{
-    background: linear-gradient(to top, #722b85, #ffffff);
+    background: linear-gradient(to top, #2f5080, #ffffff);
 }
 
 
@@ -671,11 +671,10 @@ html {
   
   .Apartar {
     color: white;
-    background-color: #007bff;
     padding: 5px 10px;
     border-radius: 11px;
     text-decoration: none;
-    background-color: purple;
+    background-color: #2f5080;
     font-size: medium;
     margin-right: 30px;
     width: 262px;
@@ -690,18 +689,17 @@ html {
 
   .Devolver{
     color: white;
-    background-color: #007bff;
+    background-color: #1d3557;
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
-    background-color: purple;
     font-size: revert;
     /* width: 95%; */
     margin-right: 4px;
     border: none;
   }
   .Devolver:hover{
-    background-color: rgb(90, 4, 90);
+    background-color: rgb(5, 79, 132);
   }
 
   .Renovar{
@@ -715,7 +713,7 @@ html {
     border: none;
   }
   .Renovar:hover{
-    background-color: #0a3472;
+    background-color: #0653c8;
   }
 
   .eliminarLibro:hover{
@@ -783,7 +781,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
-    background-color: #722b85;
+    background-color: #1d3557;
     height: 5px;
     margin-bottom: 20px;
     width: 90%;
