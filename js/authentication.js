@@ -79,7 +79,7 @@ signUp.addEventListener('click', (e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Los datos estan incompletos!!'
+                text: 'Error al registrarse. Vuelva a intentarlo.'
             });
         });
     } else {
