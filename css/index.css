@@ -26,6 +26,15 @@
     height: 100px;
 }
 
+.user-log {
+    text-align: center;
+}
+
+.user-log img {
+    width: 100px;
+    height: 120px;
+}
+
 .text-center {
     text-align: center;
 }
