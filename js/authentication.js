@@ -106,8 +106,13 @@ login.addEventListener('click', (e) => {
             update(ref(database, 'users/' + user.uid),{
                 last_login: dt,
             })
-            //alert('User loged in!')
-            window.location.href = "biblioteca.html"; // Redirige al usuario a biblioteca.html
+
+            // Verifica el correo electrónico y redirige según la condición
+            if (email === 'administrador2023@ugto.mx') {
+                window.location.href = "biblioteca.html";
+            } else {
+                window.location.href = "libros.html";
+            }
         })
         .catch((error) => {
             const errorCode = error.code;

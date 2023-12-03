@@ -44,6 +44,7 @@ let userUpd = {} //usuario para actualizar
 document.addEventListener('DOMContentLoaded', async (e) => {
     libros = await getLibros()
     console.log('libros:', libros)
+    creaCards(libros)
     main()
 })
 
