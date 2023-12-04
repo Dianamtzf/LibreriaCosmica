@@ -19,12 +19,6 @@ const btnUp = document.getElementById('btnUpdate');
 const btnAct = document.getElementById('btnActualizar');
 const btnRen = document.getElementById('btnRenew');
 
-const imgStephen = document.getElementById('imgStephen') 
-const imgClaire = document.getElementById('imgClaire') 
-const imgJohn = document.getElementById('imgJohn') 
-const imgNail = document.getElementById('imgNail') 
-const imgPerfume = document.getElementById('imgPerfume') 
-
 //---------------Carga de tarjetas---------------------
 
 const cardBook = document.querySelector('#cardBook').content
@@ -429,36 +423,6 @@ document.querySelectorAll('.container-menu nav a').forEach((categoria) => {
     } 
 });
   
-//IMAGENES DEL INICIO
-imgStephen.addEventListener('click', () => {
-    let temp = []
-    temp = libros.filter((libro) => libro.lib_autor == 'Stephen King')
-    creaCards(temp)
- });
-
- imgClaire.addEventListener('click', () => {
-    let temp = []
-    temp = libros.filter((libro) => libro.lib_autor == 'Claire Martin')
-    creaCards(temp)
- });
-
- imgJohn.addEventListener('click', () => {
-    let temp = []
-    temp = libros.filter((libro) => libro.lib_autor == 'John Green')
-    creaCards(temp)
- });
-
- imgNail.addEventListener('click', () => {
-    let temp = []
-    temp = libros.filter((libro) => libro.lib_autor == 'Neil Gaiman')
-    creaCards(temp)
- });
-
- imgPerfume.addEventListener('click', () => {
-    let temp = []
-    temp = libros.filter((libro) => libro.lib_titulo == 'El perfume del rey')
-    creaCards(temp)
- });
 
 
 
